@@ -1,19 +1,46 @@
 // REACT & LIBRARIES
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
+// PAGES
+import {
+  AddJob,
+  Admin,
+  DashboardLayout,
+  EditJob,
+  DeleteJob,
+  Error,
+  HomeLayout,
+  Landing,
+  Login,
+  Profile,
+  Register,
+  Stats,
+} from "./pages";
+
 function App() {
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <h1>Hi</h1>,
-    },
-    {
-      path: "/about",
-      element: <h1>about</h1>,
-    },
-    {
-      path: "/",
-      element: <h1>Hi</h1>,
+      element: <HomeLayout />,
+      errorElement: <Error />,
+      children: [
+        {
+          index: true,
+          element: <Landing />,
+        },
+        {
+          path: "/register",
+          element: <Register />,
+        },
+        {
+          path: "/login",
+          element: <Login />,
+        },
+        {
+          path: "/dashboard",
+          element: <DashboardLayout />,
+        },
+      ],
     },
   ]);
 
@@ -26,4 +53,4 @@ function App() {
 
 export default App;
 
-// 3
+// 4 - 4
