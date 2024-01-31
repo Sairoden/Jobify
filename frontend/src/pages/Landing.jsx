@@ -12,7 +12,7 @@ import { Logo } from "../ui";
 
 function Landing() {
   return (
-    <StyledWrapper>
+    <StyledLanding>
       <nav>
         <Logo />
       </nav>
@@ -36,11 +36,11 @@ function Landing() {
         </div>
         <img src={main} alt="job hunt" className="img main-img" />
       </div>
-    </StyledWrapper>
+    </StyledLanding>
   );
 }
 
-const StyledWrapper = styled.section`
+const StyledLanding = styled.section`
   nav {
     width: var(--fluid-width);
     max-width: var(--max-width);
