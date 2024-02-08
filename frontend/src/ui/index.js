@@ -1,4 +1,3 @@
-import Logo from "./Logo";
-import FormRow from "./FormRow";
-
-export { Logo, FormRow };
+export { default as Logo } from "./Logo";
+export { default as FormRow } from "./FormRow";
+export { default as Navbar } from "./Navbar";

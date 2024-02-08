@@ -70,6 +70,7 @@ const StyledRegister = styled.section`
     display: block;
     margin: 0 auto;
     align-items: center;
+    margin-bottom: 0.5rem;
   }
 
   .form {
