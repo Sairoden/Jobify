@@ -7,7 +7,7 @@ import { useDashboardContext } from "../contexts";
 // UTILS
 import { links } from "../utils";
 
-function NavLinks() {
+function NavLinks({ isBigSidebar }) {
   const { toggleSidebar, user } = useDashboardContext();
 
   return (
@@ -20,7 +20,7 @@ function NavLinks() {
             key={text}
             className="nav-link"
             to={path}
-            onClick={toggleSidebar}
+            onClick={!isBigSidebar && toggleSidebar}
             end
           >
             <span className="icon">{icon}</span>
