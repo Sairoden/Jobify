@@ -1,18 +1,12 @@
-// REACT & LIBRARIES
-import { NavLink } from "react-router-dom";
-
 // STYLES
 import styled from "styled-components";
 import { FaTimes } from "react-icons/fa";
 
 // UI COMPONENTS
-import { Logo } from "../../ui";
+import { Logo, NavLinks } from "../../ui";
 
 // CONTEXTS
 import { useDashboardContext } from "../../contexts";
-
-// UTILS
-import { links } from "../../utils";
 
 function SmallSideBar() {
   const { showSidebar, toggleSidebar } = useDashboardContext();
@@ -29,24 +23,7 @@ function SmallSideBar() {
             <Logo />
           </header>
 
-          <div className="nav-links">
-            {links.map(link => {
-              const { text, path, icon } = link;
-
-              return (
-                <NavLink
-                  key={text}
-                  className="nav-link"
-                  to={path}
-                  onClick={toggleSidebar}
-                  end
-                >
-                  <span className="icon">{icon}</span>
-                  {text}
-                </NavLink>
-              );
-            })}
-          </div>
+          <NavLinks />
         </div>
       </div>
     </StyledSmallSideBar>

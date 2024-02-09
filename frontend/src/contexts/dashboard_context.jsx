@@ -47,6 +47,7 @@ export const DashboardProvider = ({ children }) => {
     toggleDarkTheme,
     toggleSidebar,
     logoutUser,
+    user,
   };
 
   return (
