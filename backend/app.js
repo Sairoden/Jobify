@@ -12,8 +12,8 @@ const app = express();
 if (process.env.NODE_ENV === "development") app.use(morgan("dev"));
 app.use(express.json());
 
-app.get("/", (req, res) => {
-  return res.status(200).send("Hello World from the server side!");
-});
+// ROUTES
+import routes from "./routes/index.js";
+app.use(routes);
 
 export default app;
