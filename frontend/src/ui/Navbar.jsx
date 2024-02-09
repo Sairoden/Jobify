@@ -2,11 +2,8 @@
 import styled from "styled-components";
 import { FaAlignLeft } from "react-icons/fa";
 
-// FEATURES COMPONENTS
-import { LogoutContainer } from "../features";
-
 // UI COMPONENTS
-import { Logo } from "../ui";
+import { Logo, ThemeToggle, LogoutContainer } from "../ui";
 
 // CONTEXTS
 import { useDashboardContext } from "../contexts";
@@ -27,6 +24,7 @@ function Navbar() {
 
         <div className="btn-container">
           <LogoutContainer />
+          <ThemeToggle />
         </div>
       </div>
     </StyledNavbar>

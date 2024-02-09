@@ -15,7 +15,7 @@ const dashboardReducer = (state, action) => {
       return { ...state, showSidebar: !state.showSidebar };
 
     case "dashboard/isDarkTheme":
-      return { ...state, showSidebar: !state.isDarkTheme };
+      return { ...state, isDarkTheme: !state.isDarkTheme };
   }
 };
 
@@ -43,8 +43,8 @@ export const DashboardProvider = ({ children }) => {
   const value = {
     showSidebar,
     isDarkTheme,
-    dispatch,
     toggleDarkTheme,
+    dispatch,
     toggleSidebar,
     logoutUser,
     user,
