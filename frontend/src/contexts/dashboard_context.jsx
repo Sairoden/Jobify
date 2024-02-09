@@ -15,7 +15,7 @@ const dashboardReducer = (state, action) => {
       return { ...state, showSidebar: !state.showSidebar };
 
     case "dashboard/isDarkTheme":
-      return { ...state, isDarkTheme: !state.isDarkTheme };
+      return { ...state, isDarkTheme: action.payload };
   }
 };
 
@@ -29,7 +29,10 @@ export const DashboardProvider = ({ children }) => {
   const user = { name: "Sairoden" };
 
   const toggleDarkTheme = () => {
-    console.log("Toggle dark theme");
+    const newDarkTheme = !isDarkTheme;
+
+    dispatch({ type: "dashboard/isDarkTheme", payload: newDarkTheme });
+    document.body.classList.toggle("dark-theme", newDarkTheme);
   };
 
   const toggleSidebar = () => {
