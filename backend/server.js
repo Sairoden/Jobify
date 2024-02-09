@@ -1,8 +1,9 @@
 // APP
 import app from "./app.js";
 
-const PORT = 3000;
-app.listen(PORT, () => {
+const PORT = process.env.PORT || 3000;
+
+const server = app.listen(PORT, () => {
   console.log(`Listening on PORT ${PORT}`);
 });
 
@@ -24,3 +25,5 @@ process.on("SIGTERM", () => {
     console.log("💥 Process terminated!");
   });
 });
+
+// 9 - 7
