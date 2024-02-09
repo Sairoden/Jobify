@@ -1,3 +1,11 @@
+// APP
+import app from "./app.js";
+
+const PORT = 3000;
+app.listen(PORT, () => {
+  console.log(`Listening on PORT ${PORT}`);
+});
+
 process.on("uncaughtException", err => {
   console.log("UNCAUGHT EXCEPTION! 💥 Shutting down...");
   console.log(err.name, err.message);
