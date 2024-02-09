@@ -15,13 +15,13 @@ import { useDashboardContext } from "../../contexts";
 import { links } from "../../utils";
 
 function SmallSideBar() {
-  // const { asd } = useDashboardContext();
+  const { showSidebar, toggleSidebar } = useDashboardContext();
 
   return (
     <StyledSmallSideBar>
-      <div className="sidebar-container show-sidebar">
+      <div className={`sidebar-container ${showSidebar && "show-sidebar"}`}>
         <div className="content">
-          <button type="button" className="close-btn">
+          <button type="button" className="close-btn" onClick={toggleSidebar}>
             <FaTimes />
           </button>
 
@@ -34,7 +34,13 @@ function SmallSideBar() {
               const { text, path, icon } = link;
 
               return (
-                <NavLink key={text} className="nav-link">
+                <NavLink
+                  key={text}
+                  className="nav-link"
+                  to={path}
+                  onClick={toggleSidebar}
+                  end
+                >
                   <span className="icon">{icon}</span>
                   {text}
                 </NavLink>

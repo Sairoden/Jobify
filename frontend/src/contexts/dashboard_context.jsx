@@ -34,7 +34,6 @@ export const DashboardProvider = ({ children }) => {
 
   const toggleSidebar = () => {
     dispatch({ type: "dashboard/showSidebar" });
-    console.log(showSidebar);
   };
 
   const logoutUser = async () => {

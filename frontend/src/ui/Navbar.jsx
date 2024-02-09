@@ -50,6 +50,7 @@ const StyledNavbar = styled.nav`
     color: var(--primary-500);
     display: flex;
     align-items: center;
+    cursor: pointer;
   }
 
   .logo {

@@ -15,6 +15,7 @@ import {
   Profile,
   Register,
   Stats,
+  AllJobs,
 } from "./pages";
 
 function App() {
@@ -39,6 +40,32 @@ function App() {
         {
           path: "/dashboard",
           element: <DashboardLayout />,
+          children: [
+            {
+              path: "/dashboard",
+              element: <AddJob />,
+            },
+            {
+              path: "all-jobs",
+              element: <AllJobs />,
+            },
+            {
+              path: "stats",
+              element: <Stats />,
+            },
+            {
+              path: "profile",
+              element: <Profile />,
+            },
+            {
+              path: "admin",
+              element: <Admin />,
+            },
+            {
+              path: "all-jobs",
+              element: <Admin />,
+            },
+          ],
         },
       ],
     },
@@ -53,4 +80,4 @@ function App() {
 
 export default App;
 
-// 7 - 1
+// 7 - 6

@@ -1,27 +1,13 @@
-import AddJob from "./AddJob";
-import Admin from "./Admin";
-import DashboardLayout from "./DashboardLayout";
-import DeleteJob from "./DeleteJob";
-import EditJob from "./EditJob";
-import Error from "./Error";
-import HomeLayout from "./HomeLayout";
-import Landing from "./Landing";
-import Login from "./Login";
-import Profile from "./Profile";
-import Register from "./Register";
-import Stats from "./Stats";
-
-export {
-  AddJob,
-  Admin,
-  DashboardLayout,
-  EditJob,
-  DeleteJob,
-  Error,
-  HomeLayout,
-  Landing,
-  Login,
-  Profile,
-  Register,
-  Stats,
-};
+export { default as AddJob } from "./AddJob";
+export { default as Admin } from "./Admin";
+export { default as DashboardLayout } from "./DashboardLayout";
+export { default as DeleteJob } from "./DeleteJob";
+export { default as EditJob } from "./EditJob";
+export { default as Error } from "./Error";
+export { default as HomeLayout } from "./HomeLayout";
+export { default as Landing } from "./Landing";
+export { default as Login } from "./Login";
+export { default as Profile } from "./Profile";
+export { default as Register } from "./Register";
+export { default as Stats } from "./Stats";
+export { default as AllJobs } from "./AllJobs";
