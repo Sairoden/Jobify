@@ -3,12 +3,14 @@ import { nanoid } from "nanoid";
 
 let jobs = [
   {
-    id: nanoid(),
+    id: "1",
     position: "Front-End",
+    company: "Apple",
   },
   {
-    id: nanoid(),
+    id: "2",
     position: "Back-End",
+    company: "Facebook",
   },
 ];
 

@@ -6,5 +6,12 @@ const app = express();
 import jobsRouter from "./jobsRouter.js";
 
 app.use("/api/v1/jobs", jobsRouter);
+app.use("*", (req, res) => {
+  res.status(404).send({ msg: "Not Found" });
+});
+app.use((err, req, res, next) => {
+  console.log(err);
+  return res.status(500).send({ msg: "Something went wrong" });
+});
 
 export default app;
