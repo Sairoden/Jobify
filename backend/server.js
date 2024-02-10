@@ -1,11 +1,21 @@
+// LIBRARIES
+import mongoose from "mongoose";
+
 // APP
 import app from "./app.js";
 
 const PORT = process.env.PORT || 3000;
+let server;
 
-const server = app.listen(PORT, () => {
-  console.log(`Listening on PORT ${PORT}`);
-});
+try {
+  await mongoose.connect(process.env.MONGO_URL);
+  server = app.listen(PORT, () => {
+    console.log(`Listening on PORT ${PORT}`);
+  });
+} catch (err) {
+  console.log(err);
+  process.exit(1);
+}
 
 process.on("uncaughtException", err => {
   console.log("UNCAUGHT EXCEPTION! 💥 Shutting down...");
@@ -26,4 +36,4 @@ process.on("SIGTERM", () => {
   });
 });
 
-// 9 - 10
+// 9 - 20
