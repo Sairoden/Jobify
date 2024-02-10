@@ -5,7 +5,7 @@ import {
   createJob,
   updateJob,
   deleteJob,
-} from "./jobsController.js";
+} from "./jobController.js";
 
 export {
   // JOBS

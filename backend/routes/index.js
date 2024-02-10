@@ -3,7 +3,7 @@ import express from "express";
 const app = express();
 
 // ROUTERS
-import jobsRouter from "./jobsRouter.js";
+import jobsRouter from "./jobRouter.js";
 
 app.use("/api/v1/jobs", jobsRouter);
 app.use("*", (req, res) => {
