@@ -2,10 +2,12 @@
 import { nanoid } from "nanoid";
 
 // MODELS
-import { jobs } from "../models/index.js";
+import { jobModel } from "../models/index.js";
 
 const getAllJobs = async (req, res) => {
-  return res.status(200).send({ jobs });
+  const jobs = await jobModel.find();
+
+  return res.status(200).send({ jobs, count: jobs.length });
 };
 
 const getSingleJob = async (req, res) => {
@@ -13,7 +15,9 @@ const getSingleJob = async (req, res) => {
 
   if (!id) return res.status(400).send({ msg: "Please provide a job id" });
 
-  const job = jobs.find(job => job.id === id);
+  const job = await jobModel.findById(id);
+
+  if (!job) return res.status(400).send({ msg: "Job not found" });
 
   return res.status(200).send({ job });
 };
@@ -24,13 +28,9 @@ const createJob = async (req, res) => {
   if (!position || !company)
     return res.status(400).send({ msg: "Please provide company and position" });
 
-  const id = nanoid(10);
+  const job = await jobModel.create(req.body);
 
-  const job = { id, position, company };
-
-  jobs.push(job);
-
-  return res.status(200).send({ jobs });
+  return res.status(200).send({ job });
 };
 
 const updateJob = async (req, res) => {

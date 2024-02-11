@@ -1,0 +1,12 @@
+{
+  "name": "jobify",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "setup-project": "cd backend && npm i && cd ../frontend && npm i"
+  },
+  "author": "Sairoden",
+  "license": "ISC"
+}
+
