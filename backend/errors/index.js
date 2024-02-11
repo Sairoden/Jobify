@@ -1,3 +1,13 @@
-import { NotFoundError } from "./customErrors.js";
+import {
+  NotFoundError,
+  UnauthenticatedError,
+  UnauthorizedError,
+  BadRequestError,
+} from "./customErrors.js";
 
-export { NotFoundError };
+export {
+  NotFoundError,
+  UnauthenticatedError,
+  UnauthorizedError,
+  BadRequestError,
+};
