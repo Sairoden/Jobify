@@ -13,11 +13,9 @@ const getAllJobs = async (req, res) => {
 const getSingleJob = async (req, res) => {
   const { id } = req.params;
 
-  if (!id) return res.status(400).send({ msg: "Please provide a job id" });
-
   const job = await jobModel.findById(id);
 
-  if (!job) return res.status(400).send({ msg: "Job not found" });
+  if (!job) return res.status(404).send({ msg: `No job with id ${id}` });
 
   return res.status(200).send({ job });
 };
@@ -35,15 +33,10 @@ const createJob = async (req, res) => {
 
 const updateJob = async (req, res) => {
   const { id } = req.params;
-  const { position, company } = req.body;
 
-  const job = jobs.find(job => job.id === id);
+  const job = await jobModel.findByIdAndUpdate(id, req.body, { new: true });
 
-  if (!id || !job)
-    return res.status(400).send({ msg: "Please provide a valid job id" });
-
-  if (position) job.position = position;
-  if (company) job.company = company;
+  if (!job) return res.status(404).send({ msg: `No job with id ${id}` });
 
   return res.status(200).send({ job });
 };
@@ -51,13 +44,11 @@ const updateJob = async (req, res) => {
 const deleteJob = async (req, res) => {
   const { id } = req.params;
 
-  if (!id)
-    return res.status(400).send({ msg: "Please provide a valid job id" });
+  const job = await jobModel.findByIdAndDelete(id);
 
-  const newJobs = jobs.find(job => job.id === id);
-  // jobs = newJobs;
+  if (!job) return res.status(404).send({ msg: `No job with id ${id}` });
 
-  return res.status(200).send({ newJobs });
+  return res.status(200).send({ job });
 };
 
 export { getAllJobs, getSingleJob, createJob, updateJob, deleteJob };
