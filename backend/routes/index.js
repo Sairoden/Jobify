@@ -5,13 +5,13 @@ const app = express();
 // ROUTERS
 import jobsRouter from "./jobRouter.js";
 
+// MIDDLEWARES
+import { errorHandlerMiddleware } from "../middlewares/index.js";
+
 app.use("/api/v1/jobs", jobsRouter);
 app.use("*", (req, res) => {
   res.status(404).send({ msg: "Not Found" });
 });
-app.use((err, req, res, next) => {
-  console.log(err);
-  return res.status(500).send({ msg: "Something went wrong" });
-});
+app.use(errorHandlerMiddleware);
 
 export default app;
