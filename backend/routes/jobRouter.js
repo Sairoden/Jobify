@@ -12,10 +12,14 @@ import express from "express";
 const router = express.Router();
 
 // MIDDLEWARES
-import { validateTest } from "../middlewares/index.js";
+import { validateJobInput } from "../middlewares/index.js";
 
 // ROUTES
-router.route("/").get(getAllJobs).post(validateTest, createJob);
-router.route("/:id").get(getSingleJob).patch(updateJob).delete(deleteJob);
+router.route("/").get(getAllJobs).post(validateJobInput, createJob);
+router
+  .route("/:id")
+  .get(getSingleJob)
+  .patch(validateJobInput, updateJob)
+  .delete(deleteJob);
 
 export default router;
