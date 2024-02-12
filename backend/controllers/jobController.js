@@ -1,9 +1,6 @@
 // MODELS
 import { jobModel } from "../models/index.js";
 
-// ERRORS
-import { NotFoundError } from "../errors/index.js";
-
 const getAllJobs = async (req, res) => {
   const jobs = await jobModel.find();
   return res.status(200).send({ jobs, count: jobs.length });
@@ -13,8 +10,6 @@ const getSingleJob = async (req, res) => {
   const { id } = req.params;
 
   const job = await jobModel.findById(id);
-
-  if (!job) throw new NotFoundError(`No job with id ${id}`);
 
   return res.status(200).send({ job });
 };
@@ -35,8 +30,6 @@ const updateJob = async (req, res) => {
 
   const job = await jobModel.findByIdAndUpdate(id, req.body, { new: true });
 
-  if (!job) return res.status(404).send({ msg: `No job with id ${id}` });
-
   return res.status(200).send({ job });
 };
 
@@ -44,8 +37,6 @@ const deleteJob = async (req, res) => {
   const { id } = req.params;
 
   const job = await jobModel.findByIdAndDelete(id);
-
-  if (!job) return res.status(404).send({ msg: `No job with id ${id}` });
 
   return res.status(200).send({ job });
 };
