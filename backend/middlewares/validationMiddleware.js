@@ -1,5 +1,6 @@
 // LIBRARIES
-import { body, validationResult } from "express-validator";
+import mongoose from "mongoose";
+import { body, validationResult, param } from "express-validator";
 
 // ERRORS
 import { BadRequestError } from "../errors/index.js";
@@ -22,7 +23,7 @@ const withValidationErrors = validateValues => {
   ];
 };
 
-const validateJobInput = withValidationErrors([
+export const validateJobInput = withValidationErrors([
   body("company").notEmpty().withMessage("Company is required"),
   body("position").notEmpty().withMessage("Position is required"),
   body("jobLocation").notEmpty().withMessage("Job Location is required"),
@@ -34,4 +35,6 @@ const validateJobInput = withValidationErrors([
     .withMessage("Invalid type value"),
 ]);
 
-export default validateJobInput;
+export const validateIdParams = withValidationErrors([
+  param("id").custom(value => mongoose.Types.ObjectId.isValid(value)),
+]);
