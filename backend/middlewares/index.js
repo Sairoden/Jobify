@@ -1,4 +1,13 @@
 import { errorHandlerMiddleware } from "./errorHandlerMiddleware.js";
-import { validateIdParams, validateJobInput } from "./validationMiddleware.js";
+import {
+  validateIdParams,
+  validateJobInput,
+  validateRegisterInput,
+} from "./validationMiddleware.js";
 
-export { errorHandlerMiddleware, validateIdParams, validateJobInput };
+export {
+  errorHandlerMiddleware,
+  validateIdParams,
+  validateJobInput,
+  validateRegisterInput,
+};
