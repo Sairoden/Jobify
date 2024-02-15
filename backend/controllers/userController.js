@@ -2,7 +2,7 @@
 import { userModel } from "../models/index.js";
 
 // UTILS
-import { hashPassword, comparePassword } from "../utils/index.js";
+import { hashPassword, comparePassword, createJWT } from "../utils/index.js";
 
 // ERRORS
 import { UnauthenticatedError } from "../errors/customErrors.js";
@@ -29,7 +29,9 @@ const login = async (req, res) => {
   const isValidUser = user && isPasswordCorrect;
   if (!isValidUser) throw new UnauthenticatedError("Invalid credentials");
 
-  return res.status(200).send({ msg: "login successfully" });
+  const token = createJWT({ userId: user.id, role: user.role });
+
+  return res.status(200).send({ token });
 };
 
 export { register, login };
