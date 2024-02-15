@@ -1,11 +1,19 @@
 // ERRORS
 import { UnauthenticatedError } from "../errors/index.js";
 
+// MIDDLEWARES
+import { verifyJWT } from "../utils/index.js";
+
 export const authenticateUser = async (req, res, next) => {
-  const { token } = req.cookies;
+  try {
+    const { token } = req.cookies;
+    if (!token) throw new UnauthenticatedError("Authentication invalid");
 
-  if (!token) throw new UnauthenticatedError("Authentication invalid");
+    const { userId, role } = verifyJWT(token);
+    req.user = { userId, role };
 
-  console.log("AUTH MIDDLEWARE");
-  next();
+    next();
+  } catch (err) {
+    throw new UnauthenticatedError("Authentication invalid");
+  }
 };

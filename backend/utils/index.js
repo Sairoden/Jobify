@@ -5,7 +5,7 @@ import { JOB_STATUS, JOB_TYPE, JOB_SORT_BY } from "./constants.js";
 import { hashPassword, comparePassword } from "./passwordUtils.js";
 
 // TOKEN UTILS
-import { createJWT } from "./tokenUtils.js";
+import { createJWT, verifyJWT } from "./tokenUtils.js";
 
 export {
   // CONSTANTS
@@ -19,4 +19,5 @@ export {
 
   // TOKEN UTILS
   createJWT,
+  verifyJWT,
 };
