@@ -6,9 +6,12 @@ const route = express.Router();
 import { register, login } from "../controllers/index.js";
 
 // MIDDLEWARES
-import { validateRegisterInput } from "../middlewares/index.js";
+import {
+  validateRegisterInput,
+  validationLoginInput,
+} from "../middlewares/index.js";
 
 route.post("/register", validateRegisterInput, register);
-route.post("/login", login);
+route.post("/login", validationLoginInput, login);
 
 export default route;

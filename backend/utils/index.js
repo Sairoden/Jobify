@@ -2,7 +2,7 @@
 import { JOB_STATUS, JOB_TYPE, JOB_SORT_BY } from "./constants.js";
 
 // PASSWORD UTILS
-import { hashPassword } from "./passwordUtils.js";
+import { hashPassword, comparePassword } from "./passwordUtils.js";
 
 export {
   // CONSTANTS
@@ -12,4 +12,5 @@ export {
 
   // PASSWORD UTILS
   hashPassword,
+  comparePassword,
 };

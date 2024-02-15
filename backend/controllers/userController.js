@@ -2,7 +2,10 @@
 import { userModel } from "../models/index.js";
 
 // UTILS
-import { hashPassword } from "../utils/index.js";
+import { hashPassword, comparePassword } from "../utils/index.js";
+
+// ERRORS
+import { UnauthenticatedError } from "../errors/customErrors.js";
 
 const register = async (req, res) => {
   const isFirstAccount = (await userModel.countDocuments()) === 0;
@@ -17,7 +20,16 @@ const register = async (req, res) => {
 };
 
 const login = async (req, res) => {
-  return res.status(200).send("login");
+  const user = await userModel.findOne({ email: req.body.email });
+  const isPasswordCorrect = await comparePassword(
+    req.body.password,
+    user.password
+  );
+
+  const isValidUser = user && isPasswordCorrect;
+  if (!isValidUser) throw new UnauthenticatedError("Invalid credentials");
+
+  return res.status(200).send({ msg: "login successfully" });
 };
 
 export { register, login };

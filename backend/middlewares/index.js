@@ -3,6 +3,7 @@ import {
   validateIdParams,
   validateJobInput,
   validateRegisterInput,
+  validationLoginInput,
 } from "./validationMiddleware.js";
 
 export {
@@ -10,4 +11,5 @@ export {
   validateIdParams,
   validateJobInput,
   validateRegisterInput,
+  validationLoginInput,
 };
