@@ -21,12 +21,10 @@ const register = async (req, res) => {
 
 const login = async (req, res) => {
   const user = await userModel.findOne({ email: req.body.email });
-  const isPasswordCorrect = await comparePassword(
-    req.body.password,
-    user.password
-  );
 
-  const isValidUser = user && isPasswordCorrect;
+  const isValidUser =
+    user && (await comparePassword(req.body.password, user.password));
+
   if (!isValidUser) throw new UnauthenticatedError("Invalid credentials");
 
   const token = createJWT({ userId: user.id, role: user.role });

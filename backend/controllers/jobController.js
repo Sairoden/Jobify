@@ -2,8 +2,6 @@
 import { jobModel } from "../models/index.js";
 
 const getAllJobs = async (req, res) => {
-  console.log(req);
-
   const jobs = await jobModel.find();
   return res.status(200).send({ jobs, count: jobs.length });
 };
