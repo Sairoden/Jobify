@@ -4,7 +4,7 @@ import { jobModel } from "../models/index.js";
 const getAllJobs = async (req, res) => {
   console.log(req.user);
 
-  const jobs = await jobModel.find();
+  const jobs = await jobModel.find({ createdBy: req.user.userId });
   return res.status(200).send({ jobs, count: jobs.length });
 };
 
@@ -17,10 +17,7 @@ const getSingleJob = async (req, res) => {
 };
 
 const createJob = async (req, res) => {
-  const { position, company } = req.body;
-
-  if (!position || !company)
-    return res.status(400).send({ msg: "Please provide company and position" });
+  req.body.createdBy = req.user.userId;
 
   const job = await jobModel.create(req.body);
 
