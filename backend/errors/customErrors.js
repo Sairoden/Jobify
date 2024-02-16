@@ -30,6 +30,6 @@ export class UnauthorizedError extends Error {
     super(message);
 
     this.name = "UnauthorizedError";
-    this.statusCode = 402;
+    this.statusCode = 403;
   }
 }

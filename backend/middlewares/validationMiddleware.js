@@ -6,7 +6,11 @@ import { body, validationResult, param } from "express-validator";
 import { jobModel, userModel } from "../models/index.js";
 
 // ERRORS
-import { BadRequestError, NotFoundError } from "../errors/index.js";
+import {
+  BadRequestError,
+  NotFoundError,
+  UnauthorizedError,
+} from "../errors/index.js";
 
 // UTILS
 import { JOB_STATUS, JOB_TYPE } from "../utils/index.js";
@@ -22,6 +26,9 @@ const withValidationErrors = validateValues => {
 
         if (errorMessage[0].startsWith("No job"))
           throw new NotFoundError(errorMessage);
+
+        if (errorMessage[0].startsWith("Not authorized"))
+          throw new UnauthorizedError(errorMessage);
 
         throw new BadRequestError(errorMessage);
       }
@@ -43,7 +50,7 @@ export const validateJobInput = withValidationErrors([
 ]);
 
 export const validateIdParams = withValidationErrors([
-  param("id").custom(async value => {
+  param("id").custom(async (value, { req }) => {
     const isValidMongoId = mongoose.Types.ObjectId.isValid(value);
 
     if (!isValidMongoId) throw new BadRequestError("Invalid mongoDB id");
@@ -51,6 +58,12 @@ export const validateIdParams = withValidationErrors([
     const job = await jobModel.findById(value);
 
     if (!job) throw new NotFoundError(`No job with id ${value}`);
+
+    const isAdmin = req.user.role === "admin";
+    const isOwner = req.user.userId === job.createdBy.toString();
+
+    if (!isAdmin && !isOwner)
+      throw new UnauthorizedError("Not authorized to access this route");
   }),
 ]);
 
