@@ -7,7 +7,7 @@ import { hashPassword, comparePassword, createJWT } from "../utils/index.js";
 // ERRORS
 import { UnauthenticatedError } from "../errors/customErrors.js";
 
-const register = async (req, res) => {
+export const register = async (req, res) => {
   const isFirstAccount = (await userModel.countDocuments()) === 0;
   req.body.role = isFirstAccount ? "admin" : "user";
 
@@ -19,7 +19,7 @@ const register = async (req, res) => {
   return res.status(201).send({ msg: "user created" });
 };
 
-const login = async (req, res) => {
+export const login = async (req, res) => {
   const user = await userModel.findOne({ email: req.body.email });
 
   const isValidUser =
@@ -40,4 +40,11 @@ const login = async (req, res) => {
   return res.status(200).send({ msg: "User logged in" });
 };
 
-export { register, login };
+export const logout = async (req, res) => {
+  res.cookie("token", "logout", {
+    httpOnly: true,
+    expires: new Date(Date.now()),
+  });
+
+  return res.status(200).send({ msg: "User logged out" });
+};

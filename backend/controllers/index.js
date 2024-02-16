@@ -7,8 +7,8 @@ import {
   deleteJob,
 } from "./jobController.js";
 
-// USERS
-import { register, login } from "./userController.js";
+// AUTH
+import { register, login, logout } from "./authController.js";
 
 export {
   // JOBS
@@ -18,7 +18,8 @@ export {
   updateJob,
   deleteJob,
 
-  // USERS
+  // AUTH
   register,
   login,
+  logout,
 };
