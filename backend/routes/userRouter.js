@@ -9,8 +9,11 @@ import {
   updateUser,
 } from "../controllers/index.js";
 
+// MIDDLEWARES
+import { validateUpdateUserInput } from "../middlewares/index.js";
+
 route.get("/current-user", getCurrentUser);
 route.get("/admin/app-stats", getApplicationStats);
-route.patch("/update-user", updateUser);
+route.patch("/update-user", validateUpdateUserInput, updateUser);
 
 export default route;

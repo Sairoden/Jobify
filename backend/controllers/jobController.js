@@ -25,9 +25,11 @@ export const createJob = async (req, res) => {
 export const updateJob = async (req, res) => {
   const { id } = req.params;
 
-  const job = await jobModel.findByIdAndUpdate(id, req.body, { new: true });
+  const updatedJob = await jobModel.findByIdAndUpdate(id, req.body, {
+    new: true,
+  });
 
-  return res.status(200).send({ job });
+  return res.status(200).send({ job: updatedJob });
 };
 
 export const deleteJob = async (req, res) => {

@@ -6,7 +6,8 @@ import {
   validateIdParams,
   validateJobInput,
   validateRegisterInput,
-  validationLoginInput,
+  validateLoginInput,
+  validateUpdateUserInput,
 } from "./validationMiddleware.js";
 
 import { authenticateUser } from "./authMiddleware.js";
@@ -21,7 +22,8 @@ export {
   validateIdParams,
   validateJobInput,
   validateRegisterInput,
-  validationLoginInput,
+  validateLoginInput,
+  validateUpdateUserInput,
 
   // AUTH
   authenticateUser,

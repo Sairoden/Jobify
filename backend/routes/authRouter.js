@@ -8,11 +8,11 @@ import { register, login, logout } from "../controllers/index.js";
 // MIDDLEWARES
 import {
   validateRegisterInput,
-  validationLoginInput,
+  validateLoginInput,
 } from "../middlewares/index.js";
 
 route.get("/logout", logout);
 route.post("/register", validateRegisterInput, register);
-route.post("/login", validationLoginInput, login);
+route.post("/login", validateLoginInput, login);
 
 export default route;
