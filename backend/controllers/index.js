@@ -10,6 +10,13 @@ import {
 // AUTH
 import { register, login, logout } from "./authController.js";
 
+// USERS
+import {
+  getCurrentUser,
+  getApplicationStats,
+  updateUser,
+} from "./userController.js";
+
 export {
   // JOBS
   getAllJobs,
@@ -22,4 +29,9 @@ export {
   register,
   login,
   logout,
+
+  // USERS
+  getCurrentUser,
+  getApplicationStats,
+  updateUser,
 };
