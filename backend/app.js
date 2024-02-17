@@ -2,6 +2,7 @@
 import express from "express";
 import morgan from "morgan";
 import cookieParser from "cookie-parser";
+import cors from "cors";
 
 // DOTENV
 import dotenv from "dotenv";
@@ -11,6 +12,7 @@ const app = express();
 
 // MIDDLEWARES
 if (process.env.NODE_ENV === "development") app.use(morgan("dev"));
+app.use(cors());
 app.use(express.json());
 app.use(cookieParser());
 
