@@ -10,7 +10,7 @@ import {
   validateUpdateUserInput,
 } from "./validationMiddleware.js";
 
-import { authenticateUser } from "./authMiddleware.js";
+import { authenticateUser, authorizePermissions } from "./authMiddleware.js";
 
 // AUTH
 
@@ -27,4 +27,5 @@ export {
 
   // AUTH
   authenticateUser,
+  authorizePermissions,
 };

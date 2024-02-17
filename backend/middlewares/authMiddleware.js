@@ -1,5 +1,5 @@
 // ERRORS
-import { UnauthenticatedError } from "../errors/index.js";
+import { UnauthenticatedError, UnauthorizedError } from "../errors/index.js";
 
 // MIDDLEWARES
 import { verifyJWT } from "../utils/index.js";
@@ -16,4 +16,16 @@ export const authenticateUser = async (req, res, next) => {
   } catch (err) {
     throw new UnauthenticatedError("Authentication invalid");
   }
+};
+
+export const authorizePermissions = (...roles) => {
+  console.log(roles);
+
+  return (req, res, next) => {
+    if (!roles.includes(req.user.role)) {
+      throw new UnauthorizedError("Unauthorized to access this route");
+    }
+
+    next();
+  };
 };

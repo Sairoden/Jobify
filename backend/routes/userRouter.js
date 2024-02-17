@@ -10,10 +10,17 @@ import {
 } from "../controllers/index.js";
 
 // MIDDLEWARES
-import { validateUpdateUserInput } from "../middlewares/index.js";
+import {
+  validateUpdateUserInput,
+  authorizePermissions,
+} from "../middlewares/index.js";
 
 route.get("/current-user", getCurrentUser);
-route.get("/admin/app-stats", getApplicationStats);
+route.get(
+  "/admin/app-stats",
+  authorizePermissions("admin"),
+  getApplicationStats
+);
 route.patch("/update-user", validateUpdateUserInput, updateUser);
 
 export default route;
