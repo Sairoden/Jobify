@@ -1,5 +1,6 @@
 // REACT & LIBRARIES
 import { Link } from "react-router-dom";
+import { useForm } from "react-hook-form";
 
 // STYLES
 import styled from "styled-components";
@@ -8,17 +9,24 @@ import styled from "styled-components";
 import { Logo, FormRow } from "../ui";
 
 function Login() {
+  const { register, handleSubmit } = useForm();
+
+  const onSubmit = data => {
+    console.log(data);
+  };
+
   return (
     <StyledLogin>
-      <form className="form">
+      <form className="form" onSubmit={handleSubmit(onSubmit)}>
         <Logo />
         <h4>Login</h4>
 
         <FormRow
           type="email"
-          name="email"
           labelText="Email"
           defaultValue="odingandarosa@gmail.com"
+          register={register}
+          id="email"
         />
 
         <FormRow
@@ -26,6 +34,8 @@ function Login() {
           name="password"
           labelText="Password"
           defaultValue="Sairoden12"
+          register={register}
+          id="password"
         />
 
         <button type="submit" className="btn btn-block">

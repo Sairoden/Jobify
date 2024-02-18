@@ -1,16 +1,16 @@
-function FormRow({ type, name, labelText, defaultValue, required }) {
+function FormRow({ type, id, labelText, defaultValue, required, register }) {
   return (
     <div className="form-row">
       <label htmlFor="name" className="form-label">
-        {labelText || name}
+        {labelText || id}
       </label>
       <input
         type={type}
-        id={name}
-        name={name}
+        id={id}
         className="form-input"
         defaultValue={defaultValue}
         required={required}
+        {...register(id)}
       />
     </div>
   );

@@ -1,5 +1,7 @@
 // REACT & LIBRARIES
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
+import { useForm } from "react-hook-form";
 
 // STYLES
 import styled from "styled-components";
@@ -7,43 +9,63 @@ import styled from "styled-components";
 // UI COMPONENTS
 import { Logo, FormRow } from "../ui";
 
+// ROUTES
+import { registerRouter } from "../utils";
+
 function Register() {
+  const { register, handleSubmit } = useForm();
+  const navigate = useNavigate();
+
+  const handleRegister = async data => {
+    await axios.post(registerRouter, data);
+    return navigate("/login");
+  };
+
   return (
     <StyledRegister>
-      <form className="form">
+      <form className="form" onSubmit={handleSubmit(handleRegister)}>
         <Logo />
         <h4>Register</h4>
 
         <FormRow
           type="text"
-          id="firstName"
-          name="firstName"
           labelText="First Name"
           defaultValue="Sairoden"
+          register={register}
+          id="name"
         />
 
         <FormRow
           type="text"
-          id="lastName"
-          name="lastName"
           labelText="Last Name"
           defaultValue="Gandarosa"
+          register={register}
+          id="lastName"
         />
 
         <FormRow
           type="text"
-          id="location"
-          name="location"
           labelText="Location"
           defaultValue="871 M Delafuente"
+          register={register}
+          id="location"
         />
 
         <FormRow
           type="email"
-          id="email"
-          name="email"
           labelText="Email"
           defaultValue="odingandarosa@gmail.com"
+          register={register}
+          id="email"
+        />
+
+        <FormRow
+          type="password"
+          name="password"
+          labelText="Password"
+          defaultValue="Sairoden12"
+          register={register}
+          id="password"
         />
 
         <button type="submit" className="btn btn-block">

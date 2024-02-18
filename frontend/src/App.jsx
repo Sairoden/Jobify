@@ -19,10 +19,6 @@ import {
 } from "./pages";
 
 function App() {
-  fetch("http://localhost:3000/api/v1/test")
-    .then(res => res.json())
-    .then(data => console.log(data));
-
   const router = createBrowserRouter([
     {
       path: "/",
@@ -84,4 +80,4 @@ function App() {
 
 export default App;
 
-// 7 - 6
+// 10 - 1
