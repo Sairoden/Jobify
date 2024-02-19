@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 
 // STYLES
 import styled from "styled-components";
+import { toast } from "react-toastify";
 
 // UI COMPONENTS
 import { Logo, FormRow } from "../ui";
@@ -17,8 +18,14 @@ function Register() {
   const navigate = useNavigate();
 
   const handleRegister = async data => {
-    await axios.post(registerRouter, data);
-    return navigate("/login");
+    try {
+      await axios.post(registerRouter, data);
+      toast.success("Registered successfully");
+      return navigate("/login");
+    } catch (err) {
+      toast.error(err?.response?.data);
+      console.error(err.message);
+    }
   };
 
   return (
