@@ -1,23 +1,36 @@
 // REACT & LIBRARIES
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import axios from "axios";
 
 // STYLES
 import styled from "styled-components";
+import { toast } from "react-toastify";
 
 // UI COMPONENTS
 import { Logo, FormRow } from "../ui";
 
+// ROUTES
+import { loginRouter } from "../utils";
+
 function Login() {
   const { register, handleSubmit } = useForm();
+  const navigate = useNavigate();
 
-  const onSubmit = data => {
-    console.log(data);
+  const handleLogin = async data => {
+    try {
+      await axios.post(loginRouter, data);
+      toast.success("Logged in successfully");
+      return navigate("/dashboard");
+    } catch (err) {
+      toast.error(err?.response?.data);
+      console.error(err.message);
+    }
   };
 
   return (
     <StyledLogin>
-      <form className="form" onSubmit={handleSubmit(onSubmit)}>
+      <form className="form" onSubmit={handleSubmit(handleLogin)}>
         <Logo />
         <h4>Login</h4>
 
@@ -42,7 +55,10 @@ function Login() {
           Submit
         </button>
 
-        <button type="submit" className="btn btn-block">
+        <button
+          onClick={() => navigate("/dashboard")}
+          className="btn btn-block"
+        >
           Explore the app
         </button>
 

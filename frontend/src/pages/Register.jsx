@@ -1,31 +1,22 @@
 // REACT & LIBRARIES
-import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
+import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 
 // STYLES
 import styled from "styled-components";
-import { toast } from "react-toastify";
 
 // UI COMPONENTS
 import { Logo, FormRow } from "../ui";
 
-// ROUTES
-import { registerRouter } from "../utils";
+// HOOKS
+import { useRegister } from "../hooks";
 
 function Register() {
   const { register, handleSubmit } = useForm();
-  const navigate = useNavigate();
+  const { register: submitRegister, isPending } = useRegister();
 
   const handleRegister = async data => {
-    try {
-      await axios.post(registerRouter, data);
-      toast.success("Registered successfully");
-      return navigate("/login");
-    } catch (err) {
-      toast.error(err?.response?.data);
-      console.error(err.message);
-    }
+    submitRegister(data);
   };
 
   return (
@@ -75,8 +66,8 @@ function Register() {
           id="password"
         />
 
-        <button type="submit" className="btn btn-block">
-          submit
+        <button type="submit" className="btn btn-block" disabled={isPending}>
+          {isPending ? "submitting..." : "submit"}
         </button>
 
         <p>
