@@ -1,7 +1,8 @@
 // AUTH
-import { register } from "./apiAuth";
+import { register, login } from "./apiAuth";
 
 export {
   // AUTH
   register,
+  login,
 };

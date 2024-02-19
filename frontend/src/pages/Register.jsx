@@ -67,7 +67,7 @@ function Register() {
         />
 
         <button type="submit" className="btn btn-block" disabled={isPending}>
-          {isPending ? "submitting..." : "submit"}
+          {isPending ? "Submitting..." : "Submit"}
         </button>
 
         <p>

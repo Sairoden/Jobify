@@ -1,9 +1,13 @@
 // REACT & LIBRARIES
 import axios from "axios";
 
-// UTILS
-import { registerRouter } from "../utils";
+// ROUTES
+import { registerRouter, loginRouter } from "../utils";
 
 export const register = async data => {
   await axios.post(registerRouter, data);
+};
+
+export const login = async data => {
+  await axios.post(loginRouter, data);
 };

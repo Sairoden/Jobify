@@ -1,31 +1,23 @@
 // REACT & LIBRARIES
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import axios from "axios";
 
 // STYLES
 import styled from "styled-components";
-import { toast } from "react-toastify";
 
 // UI COMPONENTS
 import { Logo, FormRow } from "../ui";
 
-// ROUTES
-import { loginRouter } from "../utils";
+// HOOKS
+import { useLogin } from "../hooks";
 
 function Login() {
   const { register, handleSubmit } = useForm();
+  const { login, isPending } = useLogin();
   const navigate = useNavigate();
 
   const handleLogin = async data => {
-    try {
-      await axios.post(loginRouter, data);
-      toast.success("Logged in successfully");
-      return navigate("/dashboard");
-    } catch (err) {
-      toast.error(err?.response?.data);
-      console.error(err.message);
-    }
+    login(data);
   };
 
   return (
@@ -51,8 +43,8 @@ function Login() {
           id="password"
         />
 
-        <button type="submit" className="btn btn-block">
-          Submit
+        <button type="submit" className="btn btn-block" disabled={isPending}>
+          {isPending ? "Submitting..." : "Submit"}
         </button>
 
         <button
