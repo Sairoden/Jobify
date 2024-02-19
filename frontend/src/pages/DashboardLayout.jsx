@@ -13,7 +13,7 @@ import { Navbar } from "../ui";
 // CONTEXTS
 import { DashboardProvider } from "../contexts";
 
-function DashboardLayout() { 
+function DashboardLayout() {
   return (
     <DashboardProvider>
       <StyledDashboard>

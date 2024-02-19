@@ -1,5 +1,9 @@
 // REACT & LIBRARIES
 import { createContext, useContext, useReducer } from "react";
+import { useNavigate } from "react-router-dom";
+
+// HOOKS
+import { useGetCurrentUser, useLogout } from "../hooks";
 
 const DashboardContext = createContext();
 
@@ -24,9 +28,11 @@ export const DashboardProvider = ({ children }) => {
     dashboardReducer,
     initialDashboard
   );
+  const navigate = useNavigate();
+  const { currentUser, isPending } = useGetCurrentUser();
+  const { logout, isPending: isPending2 } = useLogout();
 
-  // TEMP
-  const user = { name: "Sairoden" };
+  const user = currentUser;
 
   const toggleDarkTheme = () => {
     const newDarkTheme = !isDarkTheme;
@@ -40,7 +46,8 @@ export const DashboardProvider = ({ children }) => {
   };
 
   const logoutUser = async () => {
-    console.log("LOGOUT USER");
+    logout;
+    return navigate("/");
   };
 
   const value = {

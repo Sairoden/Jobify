@@ -1,5 +1,14 @@
+// LINKS
 import links from "./links";
-import { registerRouter, loginRouter } from "./routes";
+
+// ROUTES
+import {
+  registerRouter,
+  loginRouter,
+  getCurrentUserRouter,
+  config,
+  logoutRouter,
+} from "./routes";
 
 export {
   // LINKS
@@ -8,4 +17,7 @@ export {
   // ROUTES
   registerRouter,
   loginRouter,
+  getCurrentUserRouter,
+  config,
+  logoutRouter,
 };
