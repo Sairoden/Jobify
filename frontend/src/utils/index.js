@@ -10,6 +10,9 @@ import {
   logoutRouter,
 } from "./routes";
 
+// CONSTANTS
+import { JOB_STATUS, JOB_TYPE, JOB_SORT_BY } from "./constants";
+
 export {
   // LINKS
   links,
@@ -20,4 +23,9 @@ export {
   getCurrentUserRouter,
   config,
   logoutRouter,
+
+  // CONSTANTS
+  JOB_STATUS,
+  JOB_TYPE,
+  JOB_SORT_BY,
 };

@@ -1,7 +1,7 @@
 function FormRow({ type, id, labelText, defaultValue, required, register }) {
   return (
     <div className="form-row">
-      <label htmlFor="name" className="form-label">
+      <label htmlFor={id} className="form-label">
         {labelText || id}
       </label>
       <input

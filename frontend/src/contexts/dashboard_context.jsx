@@ -29,8 +29,8 @@ export const DashboardProvider = ({ children }) => {
     initialDashboard
   );
   const navigate = useNavigate();
-  const { currentUser, isPending } = useGetCurrentUser();
-  const { logout, isPending: isPending2 } = useLogout();
+  const { currentUser, isPending: userPending } = useGetCurrentUser();
+  const { logout, isPending: logoutPending } = useLogout();
 
   const user = currentUser;
 
@@ -58,6 +58,8 @@ export const DashboardProvider = ({ children }) => {
     toggleSidebar,
     logoutUser,
     user,
+    userPending,
+    logoutPending,
   };
 
   return (
