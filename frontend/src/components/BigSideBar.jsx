@@ -1,11 +1,11 @@
 // STYLES
 import styled from "styled-components";
 
-// UI COMPONENTS
-import { Logo, NavLinks } from "../../ui";
+// COMPONENTS
+import { Logo, NavLinks } from "./index";
 
 // CONTEXTS
-import { useDashboardContext } from "../../contexts";
+import { useDashboardContext } from "../contexts";
 
 function BigSideBar() {
   const { showSidebar } = useDashboardContext();

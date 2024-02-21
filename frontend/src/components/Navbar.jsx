@@ -2,8 +2,8 @@
 import styled from "styled-components";
 import { FaAlignLeft } from "react-icons/fa";
 
-// UI COMPONENTS
-import { Logo, ThemeToggle, LogoutContainer } from "../ui";
+// COMPONENTS
+import { Logo, ThemeToggle, LogoutContainer } from "../components";
 
 // CONTEXTS
 import { useDashboardContext } from "../contexts";

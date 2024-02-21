@@ -5,10 +5,10 @@ import { Outlet } from "react-router-dom";
 import styled from "styled-components";
 
 // FEATURES COMPONENTS
-import { BigSideBar, SmallSideBar } from "../features";
+import { BigSideBar, SmallSideBar } from "../components";
 
-// UI COMPONENTS
-import { Navbar } from "../ui";
+// COMPONENTS
+import { Navbar } from "../components";
 
 // CONTEXTS
 import { DashboardProvider } from "../contexts";

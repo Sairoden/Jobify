@@ -4,8 +4,8 @@ import { useForm } from "react-hook-form";
 // STYLES
 import styled from "styled-components";
 
-// UI COMPONENTS
-import { FormRow, Loader, FormRowSelect } from "../ui";
+// COMPONENTS
+import { FormRow, Loader, FormRowSelect } from "../components";
 
 // HOOKS
 import { useCreateJob } from "../hooks";

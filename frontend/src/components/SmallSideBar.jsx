@@ -2,11 +2,11 @@
 import styled from "styled-components";
 import { FaTimes } from "react-icons/fa";
 
-// UI COMPONENTS
-import { Logo, NavLinks } from "../../ui";
+// COMPONENTS
+import { Logo, NavLinks } from "./index";
 
 // CONTEXTS
-import { useDashboardContext } from "../../contexts";
+import { useDashboardContext } from "../contexts";
 
 function SmallSideBar() {
   const { showSidebar, toggleSidebar } = useDashboardContext();

@@ -6,3 +6,7 @@ export { default as ThemeToggle } from "./ThemeToggle";
 export { default as LogoutContainer } from "./LogoutContainer";
 export { default as Loader } from "./Loader";
 export { default as FormRowSelect } from "./FormRowSelect";
+export { default as BigSideBar } from "./BigSideBar";
+export { default as SmallSideBar } from "./SmallSideBar";
+export { default as SearchContainer } from "./SearchContainer";
+export { default as JobsContainer } from "./JobsContainer";

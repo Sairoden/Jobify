@@ -7,8 +7,8 @@ import styled from "styled-components";
 // ASSETS
 import main from "../assets/images/main.svg";
 
-// UI COMPONENTS
-import { Logo } from "../ui";
+// COMPONENTS
+import { Logo } from "../components";
 
 function Landing() {
   return (

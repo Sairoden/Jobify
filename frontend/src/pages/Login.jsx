@@ -5,8 +5,8 @@ import { useForm } from "react-hook-form";
 // STYLES
 import styled from "styled-components";
 
-// UI COMPONENTS
-import { Logo, FormRow, Loader } from "../ui";
+// COMPONENTS
+import { Logo, FormRow, Loader } from "../components";
 
 // HOOKS
 import { useLogin } from "../hooks";
