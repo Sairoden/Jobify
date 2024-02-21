@@ -5,7 +5,7 @@ import { register, login, logout } from "./apiAuth";
 import { getCurrentUser } from "./apiUsers";
 
 // JOBS
-import { createJob } from "./apiJobs";
+import { createJob, getAllJobs } from "./apiJobs";
 
 export {
   // AUTH
@@ -18,4 +18,5 @@ export {
 
   // JOBS
   createJob,
+  getAllJobs,
 };
