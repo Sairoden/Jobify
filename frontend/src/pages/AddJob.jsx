@@ -2,13 +2,15 @@
 import { useForm } from "react-hook-form";
 
 // STYLES
-import { toast } from "react-toastify";
 import styled from "styled-components";
 
 // UI COMPONENTS
 import { FormRow, Loader, FormRowSelect } from "../ui";
 
 // HOOKS
+import { useCreateJob } from "../hooks";
+
+// CONTEXTS
 import { useDashboardContext } from "../contexts";
 
 // UTILS
@@ -17,12 +19,13 @@ import { JOB_STATUS, JOB_TYPE } from "../utils";
 function AddJob() {
   const { register, handleSubmit } = useForm();
   const { user, userPending } = useDashboardContext();
+  const { createJob, isPending: jobPending } = useCreateJob();
 
   const handleAddJob = data => {
-    console.log(data);
+    createJob(data);
   };
 
-  if (userPending) return <Loader />;
+  if (userPending || jobPending) return <Loader />;
 
   return (
     <StyledAddJob>
@@ -35,6 +38,7 @@ function AddJob() {
             defaultValue="odingandarosa@gmail.com"
             register={register}
             id="position"
+            required
           />
 
           <FormRow
@@ -43,6 +47,7 @@ function AddJob() {
             defaultValue="odingandarosa@gmail.com"
             register={register}
             id="company"
+            required
           />
 
           <FormRow
@@ -51,6 +56,7 @@ function AddJob() {
             defaultValue={user.location}
             register={register}
             id="jobLocation"
+            required
           />
 
           <FormRowSelect
@@ -58,7 +64,9 @@ function AddJob() {
             type="text"
             defaultValue={JOB_STATUS.PENDING}
             list={Object.values(JOB_STATUS)}
-            name="jobLocation"
+            register={register}
+            name="jobStatus"
+            required
           />
 
           <FormRowSelect
@@ -66,7 +74,9 @@ function AddJob() {
             type="text"
             defaultValue={JOB_TYPE.FULL_TIME}
             list={Object.values(JOB_TYPE)}
+            register={register}
             name="jobType"
+            required
           />
 
           <button

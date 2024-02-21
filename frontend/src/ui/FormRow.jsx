@@ -1,4 +1,11 @@
-function FormRow({ type, id, labelText, defaultValue, required, register }) {
+function FormRow({
+  type,
+  id,
+  labelText,
+  defaultValue,
+  required = false,
+  register,
+}) {
   return (
     <div className="form-row">
       <label htmlFor={id} className="form-label">

@@ -6,6 +6,9 @@ import useLogout from "./auth/useLogout";
 // USERS
 import useGetCurrentUser from "./users/useGetCurrentUser";
 
+// JOBS
+import useCreateJob from "./jobs/useCreateJob";
+
 export {
   // AUTH
   useRegister,
@@ -14,4 +17,7 @@ export {
 
   // USERS
   useGetCurrentUser,
+
+  // JOBS
+  useCreateJob,
 };
