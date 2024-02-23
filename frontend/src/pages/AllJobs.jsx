@@ -1,13 +1,12 @@
 // COMPONENTS
 import { Loader, SearchContainer, JobsContainer } from "../components";
 
-// HOOKS
+// CONTEXTS
 import { useGetAllJobs } from "../hooks";
-
 function AllJobs() {
-  const { allJobs, isPending } = useGetAllJobs();
+  const { allJobs, allJobsPending } = useGetAllJobs();
 
-  if (isPending) return <Loader />;
+  if (allJobsPending) return <Loader />;
 
   console.log(allJobs);
 

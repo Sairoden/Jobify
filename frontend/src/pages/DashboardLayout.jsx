@@ -11,24 +11,26 @@ import { BigSideBar, SmallSideBar } from "../components";
 import { Navbar } from "../components";
 
 // CONTEXTS
-import { DashboardProvider } from "../contexts";
+import { DashboardProvider, JobProvider } from "../contexts";
 
 function DashboardLayout() {
   return (
     <DashboardProvider>
-      <StyledDashboard>
-        <main className="dashboard">
-          <SmallSideBar />
-          <BigSideBar />
+      <JobProvider>
+        <StyledDashboard>
+          <main className="dashboard">
+            <SmallSideBar />
+            <BigSideBar />
 
-          <div>
-            <Navbar />
-            <div className="dashboard-page">
-              <Outlet />
+            <div>
+              <Navbar />
+              <div className="dashboard-page">
+                <Outlet />
+              </div>
             </div>
-          </div>
-        </main>
-      </StyledDashboard>
+          </main>
+        </StyledDashboard>
+      </JobProvider>
     </DashboardProvider>
   );
 }

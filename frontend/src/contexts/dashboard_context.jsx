@@ -20,6 +20,9 @@ const dashboardReducer = (state, action) => {
 
     case "dashboard/isDarkTheme":
       return { ...state, isDarkTheme: action.payload };
+
+    default:
+      return { ...state };
   }
 };
 
