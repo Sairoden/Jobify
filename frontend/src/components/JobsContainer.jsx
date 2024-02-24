@@ -23,7 +23,7 @@ function JobsContainer() {
     <StyledJobsContainer>
       <div className="jobs">
         {allJobs.map(job => (
-          <Job key={job.id} {...job} />
+          <Job key={job._id} {...job} />
         ))}
       </div>
     </StyledJobsContainer>
