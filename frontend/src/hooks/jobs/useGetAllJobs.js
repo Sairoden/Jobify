@@ -13,7 +13,7 @@ const useGetAllJobs = () => {
     queryFn: getAllJobs,
   });
 
-  if (!allJobs) toast.error("No jobs found");
+  if (!allJobs && !isPending) toast.error("No jobs found");
 
   return { allJobs, isPending };
 };
