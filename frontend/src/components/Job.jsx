@@ -21,7 +21,7 @@ function Job({
 }) {
   console.log(createdAt);
 
-  const date = day(createdAt).format("MMM Do, YYYY");
+  const date = day(createdAt).format("MMM D, YYYY");
 
   return (
     <StyledJob>
@@ -43,11 +43,15 @@ function Job({
         </div>
 
         <footer className="actions">
-          <Link className="btn edit-btn">Edit</Link>
+          <Link to={`/dashboard/edit-job/${_id}`} className="btn edit-btn">
+            Edit
+          </Link>
 
-          <button type="button" className="btn delete-btn">
-            Delete
-          </button>
+          <Link to="/dashboard/delete-job">
+            <button type="button" className="btn delete-btn">
+              Delete
+            </button>
+          </Link>
         </footer>
       </div>
     </StyledJob>

@@ -56,6 +56,14 @@ function App() {
               element: <AddJob />,
             },
             {
+              path: "edit-job/:jobId",
+              element: <EditJob />,
+            },
+            {
+              path: "delete-job/:jobId",
+              element: <DeleteJob />,
+            },
+            {
               path: "all-jobs",
               element: <AllJobs />,
             },
@@ -93,4 +101,4 @@ function App() {
 
 export default App;
 
-//  12 - 7
+//  12 - 11
