@@ -8,8 +8,6 @@ function AllJobs() {
 
   if (allJobsPending) return <Loader />;
 
-  console.log(allJobs);
-
   return (
     <>
       <SearchContainer />

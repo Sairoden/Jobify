@@ -19,8 +19,6 @@ function Job({
   jobType,
   createdAt,
 }) {
-  console.log(createdAt);
-
   const date = day(createdAt).format("MMM D, YYYY");
 
   return (

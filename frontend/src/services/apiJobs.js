@@ -20,3 +20,9 @@ export const getAllJobs = async () => {
 export const createJob = async job => {
   await axios.post(createJobRouter, job, config);
 };
+
+export const editJob = async ({ newJob, jobId }) => {
+  const { data } = await axios.get(`${getSingleJobRouter}/${jobId}`, config);
+
+  console.log(data.job);
+};

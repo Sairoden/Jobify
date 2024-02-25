@@ -9,6 +9,7 @@ import useGetCurrentUser from "./users/useGetCurrentUser";
 // JOBS
 import useCreateJob from "./jobs/useCreateJob";
 import useGetAllJobs from "./jobs/useGetAllJobs";
+import useEditJob from "./jobs/useEditJob";
 
 export {
   // AUTH
@@ -22,4 +23,5 @@ export {
   // JOBS
   useCreateJob,
   useGetAllJobs,
+  useEditJob,
 };
