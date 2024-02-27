@@ -1,6 +1,6 @@
 // REACT & LIBRARIES
 import { useNavigate } from "react-router-dom";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 // STYLES
 import { toast } from "react-toastify";
@@ -10,10 +10,12 @@ import { createJob as createJobApi } from "../../services";
 
 const useCreateJob = () => {
   const navigate = useNavigate();
+  const queryClient = useQueryClient();
 
   const { mutate: createJob, isPending } = useMutation({
     mutationFn: createJobApi,
     onSuccess: () => {
+      queryClient.invalidateQueries(["jobs"]);
       toast.success("Job created successfully");
       navigate("/dashboard/all-jobs");
     },

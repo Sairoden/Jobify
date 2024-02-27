@@ -30,3 +30,7 @@ export const createJob = async job => {
 export const editJob = async ({ newJob, jobId }) => {
   await axios.patch(`${updateJobRouter}/${jobId}`, newJob, config);
 };
+
+export const deleteJob = async jobId => {
+  await axios.delete(`${deleteJobRouter}/${jobId}`, config);
+};

@@ -10,6 +10,9 @@ import { FaLocationArrow, FaBriefcase, FaCalendarAlt } from "react-icons/fa";
 // COMPONENTS
 import { JobInfo } from "./index";
 
+// CONTEXTS
+import { useDeleteJob } from "../hooks";
+
 function Job({
   _id,
   position,
@@ -20,6 +23,7 @@ function Job({
   createdAt,
 }) {
   const date = day(createdAt).format("MMM D, YYYY");
+  const { deleteJob, isPending: deleteJobPending } = useDeleteJob();
 
   return (
     <StyledJob>
@@ -45,11 +49,14 @@ function Job({
             Edit
           </Link>
 
-          <Link to="/dashboard/delete-job">
-            <button type="button" className="btn delete-btn">
-              Delete
-            </button>
-          </Link>
+          <button
+            type="button"
+            className="btn delete-btn"
+            disabled={deleteJobPending}
+            onClick={() => deleteJob(_id)}
+          >
+            Delete
+          </button>
         </footer>
       </div>
     </StyledJob>

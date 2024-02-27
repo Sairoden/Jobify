@@ -5,7 +5,13 @@ import { register, login, logout } from "./apiAuth";
 import { getCurrentUser } from "./apiUsers";
 
 // JOBS
-import { createJob, getAllJobs, editJob, getSingleJob } from "./apiJobs";
+import {
+  getAllJobs,
+  getSingleJob,
+  createJob,
+  editJob,
+  deleteJob,
+} from "./apiJobs";
 
 export {
   // AUTH
@@ -17,8 +23,9 @@ export {
   getCurrentUser,
 
   // JOBS
-  createJob,
   getAllJobs,
-  editJob,
   getSingleJob,
+  createJob,
+  editJob,
+  deleteJob,
 };

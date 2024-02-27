@@ -7,10 +7,11 @@ import useLogout from "./auth/useLogout";
 import useGetCurrentUser from "./users/useGetCurrentUser";
 
 // JOBS
-import useCreateJob from "./jobs/useCreateJob";
 import useGetAllJobs from "./jobs/useGetAllJobs";
 import useGetSingleJob from "./jobs/useGetSingleJob";
+import useCreateJob from "./jobs/useCreateJob";
 import useEditJob from "./jobs/useEditJob";
+import useDeleteJob from "./jobs/useDeleteJob";
 
 export {
   // AUTH
@@ -22,8 +23,9 @@ export {
   useGetCurrentUser,
 
   // JOBS
-  useCreateJob,
   useGetAllJobs,
   useGetSingleJob,
+  useCreateJob,
   useEditJob,
+  useDeleteJob,
 };
