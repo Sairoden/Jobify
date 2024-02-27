@@ -1,5 +1,6 @@
 // REACT & LIBRARIES
 import { useMutation } from "@tanstack/react-query";
+import { useNavigate } from "react-router-dom";
 
 // STYLES
 import { toast } from "react-toastify";
@@ -8,10 +9,12 @@ import { toast } from "react-toastify";
 import { editJob as editJobApi } from "../../services";
 
 const useEditJob = () => {
+  const navigate = useNavigate();
+
   const { mutate: editJob, isPending } = useMutation({
     mutationFn: ({ newJob, jobId }) => editJobApi({ newJob, jobId }),
     onSuccess: data => {
-      // console.log("Done");
+      console.log("Done");
     },
     onError: err => {
       toast.error(err?.response?.data);

@@ -5,6 +5,7 @@ function FormRow({
   defaultValue,
   required = false,
   register,
+  disabled,
 }) {
   return (
     <div className="form-row">
@@ -17,6 +18,7 @@ function FormRow({
         className="form-input"
         defaultValue={defaultValue}
         required={required}
+        disabled={disabled}
         {...register(id)}
       />
     </div>

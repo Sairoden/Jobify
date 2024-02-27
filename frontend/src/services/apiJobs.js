@@ -17,12 +17,19 @@ export const getAllJobs = async () => {
   return data?.jobs;
 };
 
+export const getSingleJob = async jobId => {
+  const { data } = await axios.get(`${getSingleJobRouter}/${jobId}`, config);
+
+  return data?.job;
+};
+
 export const createJob = async job => {
   await axios.post(createJobRouter, job, config);
 };
 
 export const editJob = async ({ newJob, jobId }) => {
-  const { data } = await axios.get(`${getSingleJobRouter}/${jobId}`, config);
+  console.log(newJob);
+  // const { data } = await axios.post(`${updateJobRouter}/${jobId}`, config);
 
-  console.log(data.job);
+  // console.log(data?.job);
 };

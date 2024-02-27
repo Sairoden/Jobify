@@ -9,6 +9,7 @@ import useGetCurrentUser from "./users/useGetCurrentUser";
 // JOBS
 import useCreateJob from "./jobs/useCreateJob";
 import useGetAllJobs from "./jobs/useGetAllJobs";
+import useGetSingleJob from "./jobs/useGetSingleJob";
 import useEditJob from "./jobs/useEditJob";
 
 export {
@@ -23,5 +24,6 @@ export {
   // JOBS
   useCreateJob,
   useGetAllJobs,
+  useGetSingleJob,
   useEditJob,
 };

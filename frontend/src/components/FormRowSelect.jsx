@@ -1,23 +1,24 @@
 function FormRowSelect({
-  name,
   labelText,
   list,
   defaultValue = "",
   register,
   required = false,
+  id,
+  disabled,
 }) {
   return (
     <div className="form-row">
-      <label htmlFor={name} className="form-label">
-        {labelText || name}
+      <label htmlFor={id} className="form-label">
+        {labelText || id}
       </label>
       <select
-        name={name}
-        id={name}
+        id={id}
         className="form-select"
         defaultValue={defaultValue || ""}
         required={required}
-        {...register(name)}
+        disabled={disabled}
+        {...register(id)}
       >
         {list.map(status => (
           <option key={status} value={status}>
