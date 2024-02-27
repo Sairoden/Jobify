@@ -4,6 +4,9 @@ import { register, login, logout } from "./apiAuth";
 // USERS
 import { getCurrentUser } from "./apiUsers";
 
+// ADMIN
+import { getAppStats } from "./apiAdmin";
+
 // JOBS
 import {
   getAllJobs,
@@ -21,6 +24,9 @@ export {
 
   // USERS
   getCurrentUser,
+
+  // ADMIN
+  getAppStats,
 
   // JOBS
   getAllJobs,

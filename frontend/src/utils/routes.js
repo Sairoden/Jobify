@@ -11,6 +11,9 @@ export const logoutRouter = `${BASE_URL}/auth/logout`;
 // USERS
 export const getCurrentUserRouter = `${BASE_URL}/users/current-user`;
 
+// USERS - ADMIN
+export const getAppStatsRouter = `${BASE_URL}/users/admin/app-stats`;
+
 // JOBS
 export const getAllJobsRouter = `${BASE_URL}/jobs`;
 export const getSingleJobRouter = `${BASE_URL}/jobs`;

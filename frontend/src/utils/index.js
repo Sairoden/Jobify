@@ -13,6 +13,7 @@ import {
   createJobRouter,
   updateJobRouter,
   deleteJobRouter,
+  getAppStatsRouter,
 } from "./routes";
 
 // CONSTANTS
@@ -24,12 +25,18 @@ export {
 
   // ROUTES
   config,
+
   // AUTH
   registerRouter,
   loginRouter,
   logoutRouter,
+
   // USERS
   getCurrentUserRouter,
+
+  // ADMIN
+  getAppStatsRouter,
+
   // JOBS
   getAllJobsRouter,
   getSingleJobRouter,

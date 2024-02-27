@@ -6,6 +6,9 @@ import useLogout from "./auth/useLogout";
 // USERS
 import useGetCurrentUser from "./users/useGetCurrentUser";
 
+// ADMIN
+import useGetAppStats from "./admin/useGetAppStats";
+
 // JOBS
 import useGetAllJobs from "./jobs/useGetAllJobs";
 import useGetSingleJob from "./jobs/useGetSingleJob";
@@ -21,6 +24,9 @@ export {
 
   // USERS
   useGetCurrentUser,
+
+  // ADMIN
+  useGetAppStats,
 
   // JOBS
   useGetAllJobs,
