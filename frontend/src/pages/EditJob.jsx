@@ -1,5 +1,4 @@
 // REACT & LIBRARIES
-import { useNavigate, useParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
 
 // COMPONENTS
@@ -12,17 +11,16 @@ import { JOB_TYPE, JOB_STATUS } from "../utils";
 import { useEditJob, useGetSingleJob } from "../hooks";
 
 function EditJob() {
-  const { jobId } = useParams();
   const { editJob, isPending: editJobPending } = useEditJob();
   const { register, handleSubmit } = useForm();
   const { singleJob, isPending: singleJobPending } = useGetSingleJob();
 
   if (singleJobPending) return <Loader />;
 
-  const { position, company, jobLocation } = singleJob;
+  const { _id, position, company, jobLocation, jobStatus, jobType } = singleJob;
 
   const handleEditJob = data => {
-    console.log(data);
+    editJob({ newJob: data, jobId: _id });
   };
 
   return (
@@ -61,7 +59,7 @@ function EditJob() {
           <FormRowSelect
             labelText="Job Status"
             type="text"
-            defaultValue={JOB_STATUS.PENDING}
+            defaultValue={jobStatus}
             list={Object.values(JOB_STATUS)}
             register={register}
             required
@@ -72,7 +70,7 @@ function EditJob() {
           <FormRowSelect
             labelText="Job Type"
             type="text"
-            defaultValue={JOB_TYPE.FULL_TIME}
+            defaultValue={jobType}
             list={Object.values(JOB_TYPE)}
             register={register}
             required

@@ -28,8 +28,5 @@ export const createJob = async job => {
 };
 
 export const editJob = async ({ newJob, jobId }) => {
-  console.log(newJob);
-  // const { data } = await axios.post(`${updateJobRouter}/${jobId}`, config);
-
-  // console.log(data?.job);
+  await axios.patch(`${updateJobRouter}/${jobId}`, newJob, config);
 };

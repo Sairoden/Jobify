@@ -13,8 +13,9 @@ const useEditJob = () => {
 
   const { mutate: editJob, isPending } = useMutation({
     mutationFn: ({ newJob, jobId }) => editJobApi({ newJob, jobId }),
-    onSuccess: data => {
-      console.log("Done");
+    onSuccess: () => {
+      toast.success("Job edited successfully");
+      navigate("/dashboard/all-jobs");
     },
     onError: err => {
       toast.error(err?.response?.data);

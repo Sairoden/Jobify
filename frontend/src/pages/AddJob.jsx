@@ -35,7 +35,7 @@ function AddJob() {
           <FormRow
             type="text"
             labelText="Position"
-            defaultValue="odingandarosa@gmail.com"
+            defaultValue="Developer"
             register={register}
             id="position"
             required
@@ -44,7 +44,7 @@ function AddJob() {
           <FormRow
             type="text"
             labelText="Company"
-            defaultValue="odingandarosa@gmail.com"
+            defaultValue="Google"
             register={register}
             id="company"
             required
@@ -65,7 +65,7 @@ function AddJob() {
             defaultValue={JOB_STATUS.PENDING}
             list={Object.values(JOB_STATUS)}
             register={register}
-            name="jobStatus"
+            id="jobStatus"
             required
           />
 
@@ -75,7 +75,7 @@ function AddJob() {
             defaultValue={JOB_TYPE.FULL_TIME}
             list={Object.values(JOB_TYPE)}
             register={register}
-            name="jobType"
+            id="jobType"
             required
           />
 
