@@ -15,7 +15,7 @@ const useLogin = () => {
     mutationFn: loginApi,
     onSuccess: () => {
       toast.success("Logged in successfully");
-      navigate("/dashboard");
+      navigate("/dashboard/all-jobs");
     },
     onError: err => {
       toast.error(err?.response?.data);

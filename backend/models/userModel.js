@@ -8,6 +8,8 @@ const userSchema = new mongoose.Schema({
   password: String,
   location: { type: String, default: "my city" },
   role: { type: String, enum: ["user", "admin"], default: "user" },
+  avatar: String,
+  avatarPublicId: String,
 });
 
 userSchema.methods.toJSON = function () {
