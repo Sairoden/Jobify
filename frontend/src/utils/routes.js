@@ -10,6 +10,7 @@ export const logoutRouter = `${BASE_URL}/auth/logout`;
 
 // USERS
 export const getCurrentUserRouter = `${BASE_URL}/users/current-user`;
+export const updateUserRouter = `${BASE_URL}/users/update-user`;
 
 // USERS - ADMIN
 export const getAppStatsRouter = `${BASE_URL}/users/admin/app-stats`;

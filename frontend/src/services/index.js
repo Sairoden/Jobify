@@ -2,7 +2,7 @@
 import { register, login, logout } from "./apiAuth";
 
 // USERS
-import { getCurrentUser } from "./apiUsers";
+import { getCurrentUser, updateUser } from "./apiUsers";
 
 // ADMIN
 import { getAppStats } from "./apiAdmin";
@@ -24,6 +24,7 @@ export {
 
   // USERS
   getCurrentUser,
+  updateUser,
 
   // ADMIN
   getAppStats,

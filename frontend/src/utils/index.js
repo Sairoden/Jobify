@@ -14,6 +14,7 @@ import {
   updateJobRouter,
   deleteJobRouter,
   getAppStatsRouter,
+  updateUserRouter,
 } from "./routes";
 
 // CONSTANTS
@@ -33,6 +34,7 @@ export {
 
   // USERS
   getCurrentUserRouter,
+  updateUserRouter,
 
   // ADMIN
   getAppStatsRouter,

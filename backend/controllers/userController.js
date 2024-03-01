@@ -15,12 +15,16 @@ export const getApplicationStats = async (req, res) => {
 };
 
 export const updateUser = async (req, res) => {
-  const obj = { ...req.body };
-  delete obj.password;
+  console.log(req.file);
+  console.log(req.body);
 
-  await userModel.findByIdAndUpdate(req.user.userId, obj, {
-    new: true,
-  });
+  // console.log(req.file);
+  // const obj = { ...req.body };
+  // delete obj.password;
+
+  // await userModel.findByIdAndUpdate(req.user.userId, obj, {
+  //   new: true,
+  // });
 
   return res.status(200).send({ msg: "Update user" });
 };

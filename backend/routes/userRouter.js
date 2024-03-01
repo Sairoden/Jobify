@@ -13,6 +13,7 @@ import {
 import {
   validateUpdateUserInput,
   authorizePermissions,
+  upload,
 } from "../middlewares/index.js";
 
 route.get("/current-user", getCurrentUser);
@@ -21,6 +22,11 @@ route.get(
   authorizePermissions("admin"),
   getApplicationStats
 );
-route.patch("/update-user", validateUpdateUserInput, updateUser);
+route.patch(
+  "/update-user",
+  upload.single("avatar"),
+  validateUpdateUserInput,
+  updateUser
+);
 
 export default route;

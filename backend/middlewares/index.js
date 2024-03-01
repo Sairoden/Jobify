@@ -10,9 +10,11 @@ import {
   validateUpdateUserInput,
 } from "./validationMiddleware.js";
 
+// AUTH
 import { authenticateUser, authorizePermissions } from "./authMiddleware.js";
 
-// AUTH
+// MULTER
+import upload from "./multerMiddleware.js";
 
 export {
   // ERRORS
@@ -28,4 +30,7 @@ export {
   // AUTH
   authenticateUser,
   authorizePermissions,
+
+  // MULTER
+  upload,
 };

@@ -5,6 +5,7 @@ import useLogout from "./auth/useLogout";
 
 // USERS
 import useGetCurrentUser from "./users/useGetCurrentUser";
+import useUpdateUser from "./users/useUpdateUser";
 
 // ADMIN
 import useGetAppStats from "./admin/useGetAppStats";
@@ -24,6 +25,7 @@ export {
 
   // USERS
   useGetCurrentUser,
+  useUpdateUser,
 
   // ADMIN
   useGetAppStats,
