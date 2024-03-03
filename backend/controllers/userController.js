@@ -1,3 +1,7 @@
+// LIBRARIES
+import cloudinary from "cloudinary";
+import { promises as fs } from "fs";
+
 // MODELS
 import { userModel, jobModel } from "../models/index.js";
 
@@ -15,16 +19,23 @@ export const getApplicationStats = async (req, res) => {
 };
 
 export const updateUser = async (req, res) => {
-  console.log(req.file);
-  console.log(req.body);
+  const newUser = { ...req.body };
+  delete newUser.password;
 
-  // console.log(req.file);
-  // const obj = { ...req.body };
-  // delete obj.password;
+  if (req.file) {
+    const response = await cloudinary.v2.uploader.upload(req.file.path);
+    await fs.unlink(req.file.path);
+    newUser.avatar = response.secure_url;
+    newUser.newPublicId = response.public_id;
+  }
 
-  // await userModel.findByIdAndUpdate(req.user.userId, obj, {
-  //   new: true,
-  // });
+  const updatedUser = await userModel.findByIdAndUpdate(
+    req.user.userId,
+    newUser
+  );
+
+  if (req.file && updatedUser.avatarPublicId)
+    await cloudinary.v2.uploader.destroy(updatedUser.avatarPublicId);
 
   return res.status(200).send({ msg: "Update user" });
 };

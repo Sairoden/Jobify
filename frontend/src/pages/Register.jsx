@@ -6,7 +6,7 @@ import { useForm } from "react-hook-form";
 import styled from "styled-components";
 
 // COMPONENTS
-import { Logo, FormRow } from "../components";
+import { Logo, FormRow, SubmitButton } from "../components";
 
 // HOOKS
 import { useRegister } from "../hooks";
@@ -66,9 +66,7 @@ function Register() {
           id="password"
         />
 
-        <button type="submit" className="btn btn-block" disabled={isPending}>
-          {isPending ? "Submitting..." : "Submit"}
-        </button>
+        <SubmitButton isPending={isPending} />
 
         <p>
           Already a member?

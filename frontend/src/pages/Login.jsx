@@ -6,7 +6,7 @@ import { useForm } from "react-hook-form";
 import styled from "styled-components";
 
 // COMPONENTS
-import { Logo, FormRow, Loader } from "../components";
+import { Logo, FormRow, SubmitButton } from "../components";
 
 // HOOKS
 import { useLogin } from "../hooks";
@@ -43,9 +43,7 @@ function Login() {
           id="password"
         />
 
-        <button type="submit" className="btn btn-block" disabled={isPending}>
-          {isPending ? "Submitting..." : "Submit"}
-        </button>
+        <SubmitButton formBtn isPending={isPending} />
 
         <button
           onClick={() => navigate("/dashboard")}

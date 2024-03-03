@@ -2,7 +2,7 @@
 import { useForm } from "react-hook-form";
 
 // COMPONENTS
-import { FormRow, FormRowSelect, Loader } from "../components";
+import { FormRow, FormRowSelect, Loader, SubmitButton } from "../components";
 
 // UTILS
 import { JOB_TYPE, JOB_STATUS } from "../utils";
@@ -78,13 +78,7 @@ function EditJob() {
             disabled={editJobPending}
           />
 
-          <button
-            type="submit"
-            className="btn btn-block form-btn"
-            disabled={editJobPending}
-          >
-            {editJobPending ? "Submitting..." : "Submit"}
-          </button>
+          <SubmitButton formBtn isPending={editJobPending} />
         </div>
       </form>
     </div>

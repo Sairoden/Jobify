@@ -6,7 +6,7 @@ import styled from "styled-components";
 import { toast } from "react-toastify";
 
 // COMPONENTS
-import { FormRow, Loader } from "../components";
+import { FormRow, Loader, SubmitButton } from "../components";
 
 // CONTEXTS
 import { useDashboardContext } from "../contexts";
@@ -100,13 +100,7 @@ function Profile() {
             disabled={updateUserPending}
           />
 
-          <button
-            type="submit"
-            className="btn btn-block form-btn"
-            disabled={updateUserPending}
-          >
-            Submit
-          </button>
+          <SubmitButton formBtn isPending={updateUserPending} />
         </div>
       </form>
     </StyledProfile>

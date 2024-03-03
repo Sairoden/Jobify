@@ -21,7 +21,11 @@ function LogoutContainer() {
           setShowLogout(prevLogout => !prevLogout);
         }}
       >
-        <FaUserCircle />
+        {user?.avatar ? (
+          <img src={user.avatar} alt="avatar" className="img" />
+        ) : (
+          <FaUserCircle />
+        )}
         {user?.name}
         <FaCaretDown />
       </button>
