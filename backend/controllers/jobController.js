@@ -1,3 +1,7 @@
+// LIBRARIES
+import mongoose from "mongoose";
+import dayjs from "dayjs";
+
 // MODELS
 import { jobModel } from "../models/index.js";
 
@@ -38,4 +42,29 @@ export const deleteJob = async (req, res) => {
   const job = await jobModel.findByIdAndDelete(id);
 
   return res.status(200).send({ job });
+};
+
+export const showStats = async (req, res) => {
+  const defaultStats = {
+    pending: 22,
+    interview: 50,
+    declined: 10,
+  };
+
+  const monthlyApplications = [
+    {
+      date: "May 23",
+      count: 10,
+    },
+    {
+      date: "June 5",
+      count: 5,
+    },
+    {
+      date: "August 17",
+      count: 50,
+    },
+  ];
+
+  return res.status(200).send({ defaultStats, monthlyApplications });
 };

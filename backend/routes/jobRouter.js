@@ -5,6 +5,7 @@ import {
   createJob,
   updateJob,
   deleteJob,
+  showStats,
 } from "../controllers/index.js";
 
 // EXPRESS
@@ -16,6 +17,7 @@ import { validateJobInput, validateIdParams } from "../middlewares/index.js";
 
 // ROUTES
 router.route("/").get(getAllJobs).post(validateJobInput, createJob);
+router.route("/stats").get(showStats);
 router
   .route("/:id")
   .get(validateIdParams, getSingleJob)

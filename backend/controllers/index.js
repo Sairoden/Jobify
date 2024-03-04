@@ -5,6 +5,7 @@ import {
   createJob,
   updateJob,
   deleteJob,
+  showStats,
 } from "./jobController.js";
 
 // AUTH
@@ -24,6 +25,7 @@ export {
   createJob,
   updateJob,
   deleteJob,
+  showStats,
 
   // AUTH
   register,
