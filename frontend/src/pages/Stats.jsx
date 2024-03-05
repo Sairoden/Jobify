@@ -5,18 +5,15 @@ import { ChartsContainer, StatsContainer, Loader } from "../components";
 import { useGetStats } from "../hooks";
 
 function Stats() {
-  const {
-    stats: { defaultStats, monthlyApplications },
-    isPending: isStatsPending,
-  } = useGetStats();
+  const { stats, isPending: isStatsPending } = useGetStats();
 
   if (isStatsPending) return <Loader />;
 
   return (
     <>
-      <StatsContainer defaultStats={defaultStats} />
-      {monthlyApplications?.length > 1 && (
-        <ChartsContainer data={monthlyApplications} />
+      <StatsContainer defaultStats={stats?.defaultStats} />
+      {stats?.monthlyApplications?.length > 1 && (
+        <ChartsContainer data={stats?.monthlyApplications} />
       )}
     </>
   );
