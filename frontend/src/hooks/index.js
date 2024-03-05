@@ -11,6 +11,7 @@ import useUpdateUser from "./users/useUpdateUser";
 import useGetAppStats from "./admin/useGetAppStats";
 
 // JOBS
+import useGetStats from "./jobs/useGetStats";
 import useGetAllJobs from "./jobs/useGetAllJobs";
 import useGetSingleJob from "./jobs/useGetSingleJob";
 import useCreateJob from "./jobs/useCreateJob";
@@ -31,6 +32,7 @@ export {
   useGetAppStats,
 
   // JOBS
+  useGetStats,
   useGetAllJobs,
   useGetSingleJob,
   useCreateJob,

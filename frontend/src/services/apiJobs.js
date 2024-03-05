@@ -3,6 +3,7 @@ import axios from "axios";
 
 // ROUTES
 import {
+  getStatsRouter,
   getAllJobsRouter,
   getSingleJobRouter,
   createJobRouter,
@@ -10,6 +11,12 @@ import {
   deleteJobRouter,
   config,
 } from "../utils";
+
+export const getStats = async () => {
+  const { data } = await axios.get(getStatsRouter, config);
+
+  return data;
+};
 
 export const getAllJobs = async () => {
   const { data } = await axios.get(getAllJobsRouter, config);

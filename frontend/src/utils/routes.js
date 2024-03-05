@@ -16,6 +16,7 @@ export const updateUserRouter = `${BASE_URL}/users/update-user`;
 export const getAppStatsRouter = `${BASE_URL}/users/admin/app-stats`;
 
 // JOBS
+export const getStatsRouter = `${BASE_URL}/jobs/stats`;
 export const getAllJobsRouter = `${BASE_URL}/jobs`;
 export const getSingleJobRouter = `${BASE_URL}/jobs`;
 export const createJobRouter = `${BASE_URL}/jobs`;
