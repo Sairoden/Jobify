@@ -64,20 +64,45 @@ export const showStats = async (req, res) => {
     declined: stats.declined || 0,
   };
 
-  const monthlyApplications = [
+  let monthlyApplications = await jobModel.aggregate([
     {
-      date: "May 23",
-      count: 10,
+      $match: { createdBy: new mongoose.Types.ObjectId(req.user.userId) },
     },
     {
-      date: "June 5",
-      count: 5,
+      $addFields: {
+        createdAtDate: { $toDate: "$createdAt" },
+      },
     },
     {
-      date: "August 17",
-      count: 50,
+      $group: {
+        _id: {
+          year: { $year: "$createdAtDate" },
+          month: { $month: "$createdAtDate" },
+        },
+        count: { $sum: 1 },
+      },
     },
-  ];
+    {
+      $sort: { "_id.year": -1, "_id.month": -1 },
+    },
+    { $limit: 6 },
+  ]);
+
+  monthlyApplications = monthlyApplications
+    .map(item => {
+      const {
+        _id: { year, month },
+        count,
+      } = item;
+
+      const date = dayjs()
+        .month(month - 1)
+        .year(year)
+        .format("MMM YY");
+
+      return { date, count };
+    })
+    .reverse();
 
   return res.status(200).send({ defaultStats, monthlyApplications });
 };
