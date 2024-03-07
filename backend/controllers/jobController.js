@@ -6,7 +6,28 @@ import dayjs from "dayjs";
 import { jobModel } from "../models/index.js";
 
 export const getAllJobs = async (req, res) => {
-  const jobs = await jobModel.find({ createdBy: req.user.userId });
+  const { search, jobStatus, jobType } = req.query;
+
+  const queryObject = {
+    createdBy: req.user.userId,
+  };
+
+  if (search) {
+    queryObject.$or = [
+      { position: { $regex: search, $options: "i" } },
+      { company: { $regex: search, $options: "i" } },
+    ];
+  }
+
+  if (jobStatus && jobStatus !== "all") {
+    queryObject.jobStatus = jobStatus;
+  }
+
+  if (jobType && jobType !== "all") {
+    queryObject.jobType = jobType;
+  }
+
+  const jobs = await jobModel.find(queryObject);
   return res.status(200).send({ jobs, count: jobs.length });
 };
 

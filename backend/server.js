@@ -43,5 +43,3 @@ process.on("SIGTERM", () => {
     console.log("💥 Process terminated!");
   });
 });
-
-// 15 - 3
