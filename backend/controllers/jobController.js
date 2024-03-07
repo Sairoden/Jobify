@@ -6,7 +6,7 @@ import dayjs from "dayjs";
 import { jobModel } from "../models/index.js";
 
 export const getAllJobs = async (req, res) => {
-  const { search, jobStatus, jobType } = req.query;
+  const { search, jobStatus, jobType, sort } = req.query;
 
   const queryObject = {
     createdBy: req.user.userId,
@@ -27,7 +27,16 @@ export const getAllJobs = async (req, res) => {
     queryObject.jobType = jobType;
   }
 
-  const jobs = await jobModel.find(queryObject);
+  const sortOptions = {
+    newest: "-createdAt",
+    oldest: "createdAt",
+    "a-z": "position",
+    "z-a": "-position",
+  };
+
+  const sortKey = sortOptions[sort] || sortOptions.newest;
+
+  const jobs = await jobModel.find(queryObject).sort(sortKey);
   return res.status(200).send({ jobs, count: jobs.length });
 };
 
