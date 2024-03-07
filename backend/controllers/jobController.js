@@ -36,8 +36,22 @@ export const getAllJobs = async (req, res) => {
 
   const sortKey = sortOptions[sort] || sortOptions.newest;
 
-  const jobs = await jobModel.find(queryObject).sort(sortKey);
-  return res.status(200).send({ jobs, count: jobs.length });
+  // SETUP PAGINATION
+  const page = +req.query.page || 1;
+  const limit = +req.query.limit || 10;
+  const skip = (page - 1) * limit;
+  const numOfPages = Math.ceil(page);
+
+  const jobs = await jobModel
+    .find(queryObject)
+    .sort(sortKey)
+    .skip(skip)
+    .limit(limit);
+  const totalJobs = await jobModel.countDocuments(queryObject);
+
+  return res
+    .status(200)
+    .send({ totalJobs, numOfPages, currentPage: page, jobs });
 };
 
 export const getSingleJob = async (req, res) => {
