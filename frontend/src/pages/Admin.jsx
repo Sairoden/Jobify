@@ -15,8 +15,6 @@ function Admin() {
 
   const { users, jobs } = appStats;
 
-  console.log(appStatsPending);
-
   return (
     <StyledAdmin>
       <StatItem

@@ -18,8 +18,11 @@ export const getStats = async () => {
   return data;
 };
 
-export const getAllJobs = async () => {
-  const { data } = await axios.get(getAllJobsRouter, config);
+export const getAllJobs = async query => {
+  const { data } = await axios.get(getAllJobsRouter, {
+    params: query,
+    withCredentials: true,
+  });
 
   return data?.jobs;
 };

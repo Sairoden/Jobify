@@ -41,8 +41,6 @@ export const login = async (req, res) => {
 };
 
 export const logout = async (req, res) => {
-  console.log(res.cookie);
-
   res.cookie("token", "logout", {
     httpOnly: true,
     expires: new Date(Date.now()),

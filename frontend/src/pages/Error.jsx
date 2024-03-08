@@ -10,8 +10,6 @@ import errorImg from "../assets/images/not-found.svg";
 function Error() {
   const error = useRouteError();
 
-  console.log(error.status === 404);
-
   if (error.status === 404)
     return (
       <StyledError>

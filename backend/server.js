@@ -18,28 +18,28 @@ cloudinary.config({
 try {
   await mongoose.connect(process.env.MONGO_URL);
   server = app.listen(PORT, () => {
-    console.log(`Listening on PORT ${PORT}`);
+    console.error(`Listening on PORT ${PORT}`);
   });
 } catch (err) {
-  console.log(err);
+  console.error(err);
   process.exit(1);
 }
 
 process.on("uncaughtException", err => {
-  console.log("UNCAUGHT EXCEPTION! 💥 Shutting down...");
-  console.log(err.name, err.message);
+  console.error("UNCAUGHT EXCEPTION! 💥 Shutting down...");
+  console.error(err.name, err.message);
   process.exit(1);
 });
 
 process.on("unhandledRejection", err => {
-  console.log("UHANDLED REJECTION! 💥 Shutting down...");
-  console.log(err.name, err.message);
+  console.error("UHANDLED REJECTION! 💥 Shutting down...");
+  console.error(err.name, err.message);
   server.close(() => process.exit(1));
 });
 
 process.on("SIGTERM", () => {
-  console.log("🤯 SIGTERM RECEIVED. Shutting down gracefully");
+  console.error("🤯 SIGTERM RECEIVED. Shutting down gracefully");
   server.close(() => {
-    console.log("💥 Process terminated!");
+    console.error("💥 Process terminated!");
   });
 });

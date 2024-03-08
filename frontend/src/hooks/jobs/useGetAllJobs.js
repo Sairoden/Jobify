@@ -1,4 +1,6 @@
 // REACT & LIBRARIES
+import { useEffect, useMemo } from "react";
+import { useSearchParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 
 // STYLES
@@ -8,10 +10,32 @@ import { toast } from "react-toastify";
 import { getAllJobs } from "../../services";
 
 const useGetAllJobs = () => {
-  const { data: allJobs, isPending } = useQuery({
+  const [searchParams] = useSearchParams();
+
+  const search = searchParams.get("search");
+  const jobStatus = searchParams.get("jobStatus");
+  const jobType = searchParams.get("jobType");
+  const sort = searchParams.get("sort");
+
+  const query = {
+    search,
+    jobStatus,
+    jobType,
+    sort,
+  };
+
+  const {
+    data: allJobs,
+    isPending,
+    refetch,
+  } = useQuery({
     queryKey: ["jobs"],
-    queryFn: getAllJobs,
+    queryFn: () => getAllJobs(query),
   });
+
+  useEffect(() => {
+    refetch();
+  }, [searchParams, refetch]);
 
   if (!allJobs && !isPending) toast.error("No jobs found");
 
