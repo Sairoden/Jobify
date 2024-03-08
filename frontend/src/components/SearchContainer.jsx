@@ -3,7 +3,7 @@ import { Link, useSearchParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
 
 // COMPONENTS
-import { FormRow, FormRowSelect, SubmitButton } from "./index";
+import { FormRow, FormRowSelect } from "./index";
 
 // STYLES
 import styled from "styled-components";
@@ -12,26 +12,33 @@ import styled from "styled-components";
 import { JOB_STATUS, JOB_TYPE, JOB_SORT_BY } from "../utils";
 
 function SearchContainer() {
-  const { register, handleSubmit } = useForm();
+  const { register } = useForm();
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const handleSearch = data => {
-    const { search, jobStatus, jobType, sort } = data;
+  const delaySubmission = e => {
+    let timeout;
 
-    searchParams.set("search", search);
-    searchParams.set("jobStatus", jobStatus);
-    searchParams.set("jobType", jobType);
-    searchParams.set("sort", sort);
+    const { value, id } = e.target;
 
-    setSearchParams(searchParams);
+    clearTimeout(timeout);
+
+    timeout = setTimeout(() => {
+      searchParams.set(id, value);
+      setSearchParams(searchParams);
+    }, 1000);
   };
 
   return (
     <StyledSearchContainer>
-      <form onSubmit={handleSubmit(handleSearch)}>
+      <form>
         <h5 className="form-title">Search Form</h5>
         <div className="form-center">
-          <FormRow type="search" id="search" register={register} />
+          <FormRow
+            type="search"
+            id="search"
+            register={register}
+            onChange={e => delaySubmission(e)}
+          />
 
           <FormRowSelect
             id="jobStatus"
@@ -39,6 +46,7 @@ function SearchContainer() {
             list={["all", ...Object.values(JOB_STATUS)]}
             defaultValue="all"
             register={register}
+            onChange={e => delaySubmission(e)}
           />
 
           <FormRowSelect
@@ -47,6 +55,7 @@ function SearchContainer() {
             list={["all", ...Object.values(JOB_TYPE)]}
             defaultValue="all"
             register={register}
+            onChange={e => delaySubmission(e)}
           />
 
           <FormRowSelect
@@ -55,13 +64,12 @@ function SearchContainer() {
             list={[...Object.values(JOB_SORT_BY)]}
             defaultValue="newest"
             register={register}
+            onChange={e => delaySubmission(e)}
           />
 
-          {/* TEMP !!! */}
           <Link to="/dashboard/all-jobs" className="btn form-btn delete-btn">
             Reset Search Values
           </Link>
-          <SubmitButton formBtn />
         </div>
       </form>
     </StyledSearchContainer>

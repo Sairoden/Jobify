@@ -6,6 +6,7 @@ function FormRow({
   required = false,
   register,
   disabled,
+  onChange,
 }) {
   return (
     <div className="form-row">
@@ -21,6 +22,7 @@ function FormRow({
         required={required}
         disabled={disabled}
         {...register(id)}
+        onChange={onChange}
       />
     </div>
   );

@@ -6,6 +6,7 @@ function FormRowSelect({
   required = false,
   id,
   disabled,
+  onChange,
 }) {
   return (
     <div className="form-row">
@@ -19,6 +20,7 @@ function FormRowSelect({
         required={required}
         disabled={disabled}
         {...register(id)}
+        onChange={onChange}
       >
         {list.map(status => (
           <option key={status} value={status}>
