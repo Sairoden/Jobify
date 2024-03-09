@@ -45,13 +45,6 @@ function Login() {
 
         <SubmitButton formBtn isPending={isPending} />
 
-        <button
-          onClick={() => navigate("/dashboard")}
-          className="btn btn-block"
-        >
-          Explore the app
-        </button>
-
         <p>
           Not a member yet?
           <Link to="/register" className="member-btn">

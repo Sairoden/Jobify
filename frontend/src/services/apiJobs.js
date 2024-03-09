@@ -24,7 +24,7 @@ export const getAllJobs = async query => {
     withCredentials: true,
   });
 
-  return data?.jobs;
+  return data;
 };
 
 export const getSingleJob = async jobId => {

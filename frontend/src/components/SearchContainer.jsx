@@ -25,7 +25,7 @@ function SearchContainer() {
     timeout = setTimeout(() => {
       searchParams.set(id, value);
       setSearchParams(searchParams);
-    }, 1000);
+    }, 0);
   };
 
   return (

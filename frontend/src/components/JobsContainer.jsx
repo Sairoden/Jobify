@@ -1,8 +1,8 @@
-// COMPONENTS
-import { Job, Loader } from "./index";
-
 // STYLES
 import styled from "styled-components";
+
+// COMPONENTS
+import { Job, Loader, PageButtonContainer } from "./index";
 
 // CONTEXTS
 import { useJobContext } from "../contexts";
@@ -12,19 +12,34 @@ function JobsContainer() {
 
   if (allJobsPending) return <Loader />;
 
-  if (allJobs === 0)
+  let { jobs, totalJobs, numOfPages, currentPage } = allJobs;
+
+  console.log(allJobs);
+
+  if (jobs === 0)
     return (
       <StyledJobsContainer>
         <h2>No jobs to display...</h2>
       </StyledJobsContainer>
     );
 
+  numOfPages = 2;
+
   return (
     <StyledJobsContainer>
+      <h5>
+        {totalJobs} {jobs.length > 1 ? "jobs" : "job"} found
+      </h5>
       <div className="jobs">
-        {allJobs.map(job => (
+        {jobs.map(job => (
           <Job key={job._id} {...job} />
         ))}
+        {numOfPages > 1 && (
+          <PageButtonContainer
+            numOfPages={numOfPages}
+            currentPage={currentPage}
+          />
+        )}
       </div>
     </StyledJobsContainer>
   );
