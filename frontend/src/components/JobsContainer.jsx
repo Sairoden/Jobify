@@ -14,16 +14,12 @@ function JobsContainer() {
 
   let { jobs, totalJobs, numOfPages, currentPage } = allJobs;
 
-  console.log(allJobs);
-
   if (jobs === 0)
     return (
       <StyledJobsContainer>
         <h2>No jobs to display...</h2>
       </StyledJobsContainer>
     );
-
-  numOfPages = 2;
 
   return (
     <StyledJobsContainer>

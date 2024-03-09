@@ -16,12 +16,14 @@ const useGetAllJobs = () => {
   const jobStatus = searchParams.get("jobStatus");
   const jobType = searchParams.get("jobType");
   const sort = searchParams.get("sort");
+  const page = searchParams.get("page");
 
   const query = {
     search,
     jobStatus,
     jobType,
     sort,
+    page,
   };
 
   const {
