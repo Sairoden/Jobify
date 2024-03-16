@@ -2,6 +2,8 @@
 import morgan from "morgan";
 import cookieParser from "cookie-parser";
 import cors from "cors";
+import helmet from "helmet";
+import mongoSanitize from "express-mongo-sanitize";
 
 // DOTENV
 import dotenv from "dotenv";
@@ -30,6 +32,8 @@ app.use(
 app.use(cors());
 app.options("*", cors());
 app.use(express.json());
+app.use(helmet());
+app.use(mongoSanitize());
 app.use(cookieParser());
 
 // ROUTES
