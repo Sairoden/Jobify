@@ -94,6 +94,7 @@ export const validateLoginInput = withValidationErrors([
     .withMessage("Email is required")
     .isEmail()
     .withMessage("Invalid email format"),
+  body("password").notEmpty().withMessage("Password is required"),
 ]);
 
 export const validateUpdateUserInput = withValidationErrors([

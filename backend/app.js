@@ -23,10 +23,12 @@ app.use(express.static(path.resolve(__dirname, "./public")));
 if (process.env.NODE_ENV === "development") app.use(morgan("dev"));
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: "https://jobify-4uwc.onrender.com/",
     credentials: true,
   })
 );
+app.use(cors());
+app.options("*", cors());
 app.use(express.json());
 app.use(cookieParser());
 
