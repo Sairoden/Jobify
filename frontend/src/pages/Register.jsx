@@ -28,7 +28,6 @@ function Register() {
         <FormRow
           type="text"
           labelText="First Name"
-          defaultValue="Sairoden"
           register={register}
           id="name"
         />
@@ -36,7 +35,6 @@ function Register() {
         <FormRow
           type="text"
           labelText="Last Name"
-          defaultValue="Gandarosa"
           register={register}
           id="lastName"
         />
@@ -44,7 +42,6 @@ function Register() {
         <FormRow
           type="text"
           labelText="Location"
-          defaultValue="871 M Delafuente"
           register={register}
           id="location"
         />
@@ -52,7 +49,6 @@ function Register() {
         <FormRow
           type="email"
           labelText="Email"
-          defaultValue="odingandarosa@gmail.com"
           register={register}
           id="email"
         />
@@ -61,7 +57,6 @@ function Register() {
           type="password"
           name="password"
           labelText="Password"
-          defaultValue="Sairoden12"
           register={register}
           id="password"
         />

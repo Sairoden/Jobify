@@ -29,7 +29,6 @@ function Login() {
         <FormRow
           type="email"
           labelText="Email"
-          defaultValue="odingandarosa@gmail.com"
           register={register}
           id="email"
         />
@@ -38,7 +37,6 @@ function Login() {
           type="password"
           name="password"
           labelText="Password"
-          defaultValue="Sairoden12"
           register={register}
           id="password"
         />
